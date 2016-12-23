@@ -7,16 +7,44 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using WebServer1.Models;
+using System.Configuration;
+using System.Net;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System.Diagnostics;
 
 namespace WebServer1
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            await configSendGridasync(message);
         }
+
+        private async Task configSendGridasync(IdentityMessage message)
+        {
+
+            string apiKey = ConfigurationManager.AppSettings["SENDGRID_KEY"];
+            dynamic sg = new SendGridAPIClient(apiKey);
+
+            Email from = new Email("no-reply@hybernate.com");
+            string subject = message.Subject;
+            Email to = new Email(message.Destination);
+            Content content = new Content("text/plain", message.Body);
+            Mail mail = new Mail(from, subject, to, content);
+
+            // Send the email.
+            try
+            {
+                dynamic response = await sg.client.mail.send.post(requestBody: mail.Get());
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error.Message);
+            }
+        }
+
     }
 
     public class SmsService : IIdentityMessageService
