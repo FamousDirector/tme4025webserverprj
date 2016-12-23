@@ -34,6 +34,7 @@ namespace WebServer1.Account
 
                 // This doen't count login failures towards account lockout
                 // To enable password failures to trigger lockout, change to shouldLockout: true
+
                 // Require the user to have a confirmed email before they can log on.
                 var user = manager.FindByName(Email.Text);
                 if (user != null)
