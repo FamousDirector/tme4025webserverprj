@@ -11,6 +11,14 @@ namespace WebServer1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["username"] = User.Identity.Name;
+        }
+        protected void AddNewDeviceButton_Click(Object sender, EventArgs e)
+        {
+
+        }
+        protected void ShowThisDevice_Click(Object sender, EventArgs e)
+        {
 
         }
     }
