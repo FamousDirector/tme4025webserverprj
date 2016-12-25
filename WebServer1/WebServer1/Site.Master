@@ -56,8 +56,8 @@
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                                <li><a runat="server" href="~/Account/Register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
+                                <li><a runat="server"  href="~/Account/Login"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
@@ -65,22 +65,17 @@
                                 <li><a runat="server" href="~/User/Devices">Your Devices</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hey, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account"><span class="glyphicon glyphicon-user"></span> <%: Context.User.Identity.GetUserName()  %></a></li>
+                                <li><asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText=" Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" /></li>
                             </ul>
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
             </div>
         </div>
-        <div class="container">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
         <div class="panel-footer clearfix">
-            <hr />
             <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate</p>
         </div>
     </form>

@@ -7,6 +7,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
 
 namespace WebServer1
 {
@@ -69,12 +71,33 @@ namespace WebServer1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string path = HttpContext.Current.Request.Url.AbsolutePath.ToString();
+            string item = path.Remove(0,path.LastIndexOf('/'));
+
+            try
+            {
+                //TODO set nav bar active
+                //HtmlElement element = Site.z.GetElementById(item);
+                //element.Attributes["class"] = element.Attributes["class"] + " active";
+            }
+            catch
+            {
+                //do nothing
+            }
 
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
             Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        }
+        protected string DetermineIfActiveTab(string path, string page)
+        {
+            if(path == page)
+            {
+                return "active";
+            }
+            return "";
         }
     }
 
