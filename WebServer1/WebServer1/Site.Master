@@ -49,7 +49,8 @@
                     <a class="navbar-brand" runat="server" href="~/">Hybernate</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">                        
+                        <li><a runat="server" href="~/About">About Us</a></li>
                         <li><a runat="server" href="~/Products">Products</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
@@ -74,13 +75,13 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <div class="container">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
+        </div>
+        <div class="panel-footer clearfix">
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Hybernate</p>
-            </footer>
+            <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate</p>
         </div>
     </form>
 </body>

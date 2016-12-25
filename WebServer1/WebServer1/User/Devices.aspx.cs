@@ -15,11 +15,11 @@ namespace WebServer1
         }
         protected void AddNewDeviceButton_Click(Object sender, EventArgs e)
         {
-
+            MainMultiView.ActiveViewIndex = 2;
         }
         protected void ShowThisDevice_Click(Object sender, EventArgs e)
         {
-
+            MainMultiView.ActiveViewIndex = 1;
         }
     }
 }
