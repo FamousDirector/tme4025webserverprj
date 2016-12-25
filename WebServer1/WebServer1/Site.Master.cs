@@ -71,18 +71,50 @@ namespace WebServer1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string path = HttpContext.Current.Request.Url.AbsolutePath.ToString();
-            string item = path.Remove(0,path.LastIndexOf('/'));
+            if((System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                ManagerNav.Visible = true;
+                LogoutNav.Visible = true;
+                DevicesNav.Visible = true;
 
-            try
-            {
-                //TODO set nav bar active
-                //HtmlElement element = Site.z.GetElementById(item);
-                //element.Attributes["class"] = element.Attributes["class"] + " active";
+                RegisterNav.Visible = false;
+                LoginNav.Visible = false;
             }
-            catch
+            else
             {
-                //do nothing
+                RegisterNav.Visible = true;
+                LoginNav.Visible = true;
+                
+                ManagerNav.Visible = false;
+                LogoutNav.Visible = false;
+                DevicesNav.Visible = false;
+            }
+
+            string path = HttpContext.Current.Request.Url.AbsolutePath.ToString();
+            string item = path.Remove(0,path.LastIndexOf('/') + 1);
+
+            switch (item)
+            {
+                case "About":
+                AboutNav.Attributes["class"] = AboutNav.Attributes["class"] + " active";
+                    break;
+                case "Products":
+                    ProductsNav.Attributes["class"] = ProductsNav.Attributes["class"] + " active";
+                    break;
+                case "Register":
+                    RegisterNav.Attributes["class"] = RegisterNav.Attributes["class"] + " active";
+                    break;
+                case "Devices":
+                    DevicesNav.Attributes["class"] = DevicesNav.Attributes["class"] + " active";
+                    break;
+                case "Login":
+                    LoginNav.Attributes["class"] = LoginNav.Attributes["class"] + " active";
+                    break;
+                case "Manage":
+                    ManagerNav.Attributes["class"] = ManagerNav.Attributes["class"] + " active";
+                    break;                    
+                default:
+                    break;
             }
 
         }
