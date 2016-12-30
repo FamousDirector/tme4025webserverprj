@@ -76,15 +76,6 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.View NewDeviceView;
         
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
         /// UIDTextbox control.
         /// </summary>
         /// <remarks>
@@ -94,22 +85,13 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.TextBox UIDTextbox;
         
         /// <summary>
-        /// Label2 control.
+        /// NameTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// NameTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox NameTextbox;
         
         /// <summary>
         /// AddNewDeviceButton control.
