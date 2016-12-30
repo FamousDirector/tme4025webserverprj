@@ -271,6 +271,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="APIKeys.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">

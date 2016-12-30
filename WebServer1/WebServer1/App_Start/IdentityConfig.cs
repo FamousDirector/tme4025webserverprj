@@ -9,8 +9,7 @@ using Microsoft.Owin.Security;
 using WebServer1.Models;
 using System.Configuration;
 using System.Net;
-using SendGrid;
-using SendGrid.Helpers.Mail;
+using System.Net.Mail;
 using System.Diagnostics;
 
 namespace WebServer1
@@ -19,32 +18,51 @@ namespace WebServer1
     {
         public async Task SendAsync(IdentityMessage message)
         {
-            await configSendGridasync(message);
+            await configEmailasync(message);
         }
 
-        private async Task configSendGridasync(IdentityMessage message)
+        private async Task configEmailasync(IdentityMessage message)
         {
+            string FROM = "jamesadcameron111@gmail.com";   //TODO use a proper address
+            string TO = message.Destination;  // Replace with a "To" address. If your account is still in the
+                                                        // sandbox, this address must be verified.
 
-            string apiKey = ConfigurationManager.AppSettings["SENDGRID_KEY"];
-            dynamic sg = new SendGridAPIClient(apiKey);
+            string SUBJECT = message.Subject;
+            string BODY = message.Body;
 
-            Email from = new Email("no-reply@hybernate.com");
-            string subject = message.Subject;
-            Email to = new Email(message.Destination);
-            Content content = new Content("text/plain", message.Body);
-            Mail mail = new Mail(from, subject, to, content);
+            // Supply your SMTP credentials below. Note that your SMTP credentials are different from your AWS credentials.
+            string SMTP_USERNAME = ConfigurationManager.AppSettings["SMTPUsername"];  // Replace with your SMTP username. 
+            string SMTP_PASSWORD = ConfigurationManager.AppSettings["SMTPPassword"];  // Replace with your SMTP password.
 
-            // Send the email.
-            try
+            // Amazon SES SMTP host name. This example uses the US West (Oregon) region.
+            string HOST = "email-smtp.us-west-2.amazonaws.com";
+
+            // The port you will connect to on the Amazon SES SMTP endpoint. We are choosing port 587 because we will use
+            // STARTTLS to encrypt the connection.
+            int PORT = 587;
+
+            // Create an SMTP client with the specified host name and port.
+            using (SmtpClient client = new SmtpClient(HOST, PORT))
             {
-                dynamic response = await sg.client.mail.send.post(requestBody: mail.Get());
-            }
-            catch (Exception error)
-            {
-                Console.WriteLine(error.Message);
-            }
-        }
+                // Create a network credential with your SMTP user name and password.
+                client.Credentials = new System.Net.NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
 
+                // Use SSL when accessing Amazon SES. The SMTP session will begin on an unencrypted connection, and then 
+                // the client will issue a STARTTLS command to upgrade to an encrypted connection using SSL.
+                client.EnableSsl = true;
+
+                // Send the email. 
+                try
+                {
+                    //Attempting to send an email through the Amazon SES SMTP interface.../
+                    await client.SendMailAsync(FROM, TO, SUBJECT, BODY);
+                }
+                catch (Exception ex)
+                {
+                    new ConfigurationErrorsException();
+                }
+            }
+        }        
     }
 
     public class SmsService : IIdentityMessageService
