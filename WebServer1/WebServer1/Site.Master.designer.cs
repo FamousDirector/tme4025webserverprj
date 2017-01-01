@@ -40,6 +40,24 @@ namespace WebServer1 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DevicesNav;
         
         /// <summary>
+        /// DeviceList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView DeviceList;
+        
+        /// <summary>
+        /// ListOfUserDevices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ListOfUserDevices;
+        
+        /// <summary>
         /// RegisterNav control.
         /// </summary>
         /// <remarks>

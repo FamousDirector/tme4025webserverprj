@@ -29,13 +29,11 @@ namespace WebServer1
                 // Increment the ActiveViewIndex property 
                 // by one to advance to the next view.
                 MainMultiView.ActiveViewIndex += 1;
-                MultiViewRadioButtons.SelectedIndex += 1;
             }
             else if (MainMultiView.ActiveViewIndex == 2)
             {
                 //restart index
                 MainMultiView.ActiveViewIndex = 0;
-                MultiViewRadioButtons.SelectedIndex = 0;
             }
             else
             {
@@ -49,22 +47,15 @@ namespace WebServer1
                 // Decrement the ActiveViewIndex property
                 // by one to return to the previous view.
                 MainMultiView.ActiveViewIndex -= 1;
-                MultiViewRadioButtons.SelectedIndex -= 1;
             }
             else if (MainMultiView.ActiveViewIndex == 0)
             {
                 MainMultiView.ActiveViewIndex = 2;
-                MultiViewRadioButtons.SelectedIndex = 2;
             }
             else
             {
                 throw new Exception("An error occurred.");
             }
-        }
-
-        protected void MultiViewRadioButtons_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MainMultiView.ActiveViewIndex = MultiViewRadioButtons.SelectedIndex;
         }
     }
 }

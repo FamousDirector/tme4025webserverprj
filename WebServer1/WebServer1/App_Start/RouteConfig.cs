@@ -13,6 +13,12 @@ namespace WebServer1
             var settings = new FriendlyUrlSettings();
             settings.AutoRedirectMode = RedirectMode.Permanent;
             routes.EnableFriendlyUrls(settings);
+
+            routes.MapPageRoute("DeviceRoute",
+            "User/Devices/{device}",
+            "~/User/Devices.aspx", true,
+            new RouteValueDictionary {
+                { "device", "^[a-zA-Z0-9]*$" } });
         }
     }
 }
