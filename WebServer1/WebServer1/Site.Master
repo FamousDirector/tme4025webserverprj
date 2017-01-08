@@ -13,7 +13,24 @@
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script>
+    function checkClientTimeZone()
+    {
+        // Set the client time zone
+        var dt = new Date();
+        SetCookieCrumb("ClientDateTime", dt.toString());
 
+        var tz = -dt.getTimezoneOffset();
+        SetCookieCrumb("ClientTimeZone", tz.toString());
+
+        // Expire in one year
+        dt.setYear(dt.getYear() + 1);
+        SetCookieCrumb("expires", dt.toUTCString());
+    }
+
+    // Attach to the document onload event
+    checkClientTimeZone();
+    </script>
 </head>
 <body>
     <form runat="server">
@@ -91,6 +108,7 @@
         </div>
         <div class="panel-footer clearfix">
             <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate</p>
+            <p class="text-muted">We use our cookies in good faith to improve the user experience. Please keep them enabled.</p>
         </div>
     </form>
 </body>
