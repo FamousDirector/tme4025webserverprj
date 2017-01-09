@@ -6,7 +6,7 @@ using System.Web;
 namespace WebServer1
 {
     public class ExtraCommands
-    {        public static int GetTimeZoneOffset(HttpRequest Request)
+    {        public static int GetTimeZoneOffsetMinutes(HttpRequest Request)
         {
             // Default to the server time zone
             TimeZone tz = TimeZone.CurrentTimeZone;

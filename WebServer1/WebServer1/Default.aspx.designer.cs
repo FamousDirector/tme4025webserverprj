@@ -13,6 +13,15 @@ namespace WebServer1 {
     public partial class _Default {
         
         /// <summary>
+        /// TitlePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel TitlePanel;
+        
+        /// <summary>
         /// MainMultiView control.
         /// </summary>
         /// <remarks>
@@ -65,5 +74,14 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button NextButton;
+        
+        /// <summary>
+        /// UpdateTimer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer UpdateTimer;
     }
 }

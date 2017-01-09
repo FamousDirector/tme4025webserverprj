@@ -19,6 +19,29 @@ namespace WebServer1
 
         }
 
+        protected void NextView_Tick(object sender, EventArgs e)
+        {
+            // Determine which button was clicked
+            // and set the ActiveViewIndex property to
+            // the view selected by the user.
+            if (MainMultiView.ActiveViewIndex > -1 & MainMultiView.ActiveViewIndex <= 1)
+            {
+                // Increment the ActiveViewIndex property 
+                // by one to advance to the next view.
+                MainMultiView.ActiveViewIndex += 1;
+            }
+            else if (MainMultiView.ActiveViewIndex == 2)
+            {
+                //restart index
+                MainMultiView.ActiveViewIndex = 0;
+            }
+            else
+            {
+                throw new Exception("An error occurred.");
+            }
+            UpdateTimer.Interval = 5000; //reset timer after press
+        }
+
         protected void NextButton_Click(object sender, EventArgs e)
         {
             // Determine which button was clicked
@@ -39,6 +62,7 @@ namespace WebServer1
             {
                 throw new Exception("An error occurred.");
             }
+            UpdateTimer.Interval = 30000; //make timer longer after press
         }
         protected void BackButton_Click(object sender, EventArgs e)
         {
@@ -56,6 +80,7 @@ namespace WebServer1
             {
                 throw new Exception("An error occurred.");
             }
+            UpdateTimer.Interval = 30000; //make timer longer after press
         }
     }
 }

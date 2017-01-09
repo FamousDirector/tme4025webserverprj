@@ -13,6 +13,7 @@
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet" type='text/css'>
     <script>
     function checkClientTimeZone()
     {
@@ -56,24 +57,23 @@
         </asp:ScriptManager>
 
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Hybernate</a>
+                    <a class="navbar-brand hybernate-fonts-main" runat="server" href="~/">HYBERNATE</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">                        
-                        <li id="AboutNav" runat="server" class=""><a runat="server" href="/About">About Us</a></li>
-                        <li id="ProductsNav" runat="server"><a runat="server" href="/Products">Products</a></li>
-                        <li id="DevicesNav" class="dropdown" runat="server"><a runat="server" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Devices</a>
+                        <li id="AboutNav" runat="server" class="hybernate-fonts-main"><a runat="server" href="/About">About Us</a></li>
+                        <li id="ProductsNav" runat="server"  class="hybernate-fonts-main"><a runat="server" href="/Products">Products</a></li>
+                        <li id="DevicesNav" class="dropdown hybernate-fonts-main" runat="server"><a runat="server" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Devices</a>
                             <ul class="dropdown-menu">
                                 <li><a href="/User/Devices">Device List</a></li>
                                 <li><a href="/User/Devices/Add">Add Device...</a></li>
-                                <li><a href="/User/Devices/Remove">Remove Device...</a></li>
                                 <li role="separator" class="divider"></li>
                                 <asp:ListView ID="DeviceList" runat="server" DataSourceID="ListOfUserDevices">
                                     <LayoutTemplate>
@@ -92,17 +92,17 @@
                         </li>                            
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="RegisterNav" runat="server"><a runat="server" href="~/Account/Register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
-                        <li  id="LoginNav" runat="server"><a runat="server"  href="~/Account/Login"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                        <li id="RegisterNav" class="hybernate-fonts-secondary" runat="server"><a runat="server" href="~/Account/Register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
+                        <li  id="LoginNav" runat="server" class="hybernate-fonts-secondary"><a runat="server"  href="~/Account/Login"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="ManagerNav" runat="server"><a runat="server" href="~/Account/Manage" title="Manage your account"><span class="glyphicon glyphicon-user"></span> <%: Context.User.Identity.GetUserName()  %></a></li>
-                        <li id="LogoutNav" runat="server"><asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText=" Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" /></li>
+                        <li id="ManagerNav" runat="server" class="hybernate-fonts-secondary"><a runat="server" href="~/Account/Manage" title="Manage your account"> <%: Context.User.Identity.GetUserName()  %></a></li>
+                        <li id="LogoutNav" runat="server" class="hybernate-fonts-secondary"><asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" /></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container-custom">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>

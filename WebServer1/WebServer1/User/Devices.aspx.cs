@@ -22,10 +22,7 @@ namespace WebServer1
                     break;
                 case "Add":
                     MainMultiView.ActiveViewIndex = 2;
-                    break;
-                case "Remove":
-                    MainMultiView.ActiveViewIndex = 3;
-                    break;
+                    break;               
                 default:
                     MainMultiView.ActiveViewIndex = 1;
                     UpdateDeviceView(sender, e);
@@ -33,18 +30,18 @@ namespace WebServer1
             }
             
         }
-        protected void AddNewDeviceViewButton_Click(Object sender, EventArgs e)
+        protected void AddNewDeviceViewButton_Click(object sender, EventArgs e)
         {
            Response.RedirectToRoute("DeviceRoute", new { device = "Add" });
         }
-        protected void ShowThisDevice_Click(Object sender, EventArgs e)
+        protected void ShowThisDevice_Click(object sender, EventArgs e)
         {
             string devicename = (sender as Button).Text;
             
             Response.RedirectToRoute("DeviceRoute", new { device = devicename });
 
         }
-        protected void RemoveDeviceViewButton_Click(Object sender, EventArgs e)
+        protected void RemoveDeviceViewButton_Click(object sender, EventArgs e)
         {
             Response.RedirectToRoute("DeviceRoute", new { device = "Remove" });
         }
@@ -80,18 +77,30 @@ namespace WebServer1
         }
         protected void RemoveDeviceButton_Click(object sender, EventArgs e)
         {
-            string text = (sender as Button).Text;
-            string name = text.Remove(0, text.LastIndexOf('-') + 2);
+            string path = HttpContext.Current.Request.Url.AbsolutePath;
+            string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
 
             //TODO Check if that Name exists
 
-            DatabaseCalls.RemoveDeviceFromDatabase(name, User.Identity.Name);
+            DatabaseCalls.RemoveDeviceFromDatabase(devicename, User.Identity.Name);
 
             Response.Redirect(Request.RawUrl); //refresh page
 
         }
         protected void UpdateDeviceView(object sender, EventArgs e)
         {
+            string path = HttpContext.Current.Request.Url.AbsolutePath;
+            string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
+            DeviceNameLabel.Text = devicename;
+
+            LastUpdatedTime.Text = "Last updated at: " + DateTime.Now.ToLongTimeString();
+
+            int timezone = ExtraCommands.GetTimeZoneOffsetMinutes(Request);
+        }
+
+        protected void UpdateTimer_Tick(object sender, EventArgs e)
+        {
+            UpdateDeviceView(sender, e);
 
         }
     }

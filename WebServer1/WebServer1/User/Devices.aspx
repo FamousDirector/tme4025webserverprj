@@ -2,14 +2,14 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div id ="maincontent" class="container page-contentwrapper">
+    <div id ="maincontent" class="container-fluid page-contentwrapper">
+        <br />
         <asp:MultiView ID="MainMultiView" runat="server" >
             <asp:View ID="DefaultView" runat="server">
                 <div class="jumbotron"> 
                     <h3>Manage Your Devices</h3>
                     <ul>
                         <li><a href="/User/Devices/Add">Add Device...</a></li>
-                        <li><a href="/User/Devices/Remove">Remove Device...</a></li>
                         <asp:ListView ID="DeviceList" runat="server" DataSourceID="ListOfUserDevices">
                             <LayoutTemplate>
                                 <asp:PlaceHolder ID="itemPlaceholder" runat="server" />                                   
@@ -27,8 +27,57 @@
                 </div>
             </asp:View>
             <asp:View ID="DeviceView" runat="server">
-                <asp:UpdatePanel runat="server">
-                </asp:UpdatePanel>                
+                <div class="">                 
+                    <asp:Label ID="DeviceNameLabel" CssClass="h2" runat="server" Text="Device Name"></asp:Label>
+                    <asp:UpdatePanel runat="server" ID="TitlePanel">
+                        <ContentTemplate>
+                            <div class="row ">
+                                <div class="col-md-4 ">
+                                    <h2>1.1</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2 class="hybernate-fonts-main">1.2</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>1.3</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>2.1</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>2.2</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>2.3</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>3.1</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>3.2</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>3.3</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>4.1</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>4.2</h2>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h2>4.3</h2>
+                                </div>
+                            </div> 
+                            <br />
+                            <asp:Label ID="LastUpdatedTime" CssClass="text-muted" runat="server" Text="Panel not refreshed yet."></asp:Label>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="UpdateTimer" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>              
+                <asp:Timer ID="UpdateTimer" runat="server" OnTick="UpdateTimer_Tick" Interval="1000"></asp:Timer>                               
             </asp:View>
             <asp:View ID="NewDeviceView" runat="server">
                 <div class="jumbotron">                    
@@ -40,28 +89,7 @@
                     <asp:Button ID="AddNewDeviceButton" CssClass="btn btn-primary btn-small" runat="server" Text="Add" OnClick="AddNewDeviceButton_Click" />
                 </div>
             </asp:View>
-            <asp:View ID="RemoveDeviceView" runat="server">
-                <div class="jumbotron">                    
-                    <h3>Remove A Device</h3>
-                   <ul>
-                        <asp:ListView ID="ListView1" runat="server" DataSourceID="ListOfUserDevices">
-                            <LayoutTemplate>
-                                <asp:PlaceHolder ID="itemPlaceholder" runat="server" />                                   
-                            </LayoutTemplate>
-                            <ItemTemplate>
-                                <li>
-                                    <asp:Button ID="RemoveDeviceButton" CssClass="btn btn-danger" runat="server"  Text='<%#Eval("DeviceName")%>'/>                
-                                </li>
-                            </ItemTemplate>
-                        </asp:ListView>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HybernateDatabaseConnectionString %>" SelectCommand="SELECT [DeviceName] FROM [UserDevices] WHERE ([UserName] = @UserName)">
-                            <SelectParameters>
-                                <asp:SessionParameter Name="UserName" SessionField="username" Type="String" />
-                            </SelectParameters>
-                        </asp:SqlDataSource> 
-                    </ul>
-                </div>
-            </asp:View>
         </asp:MultiView>
     </div>
+    <br />
 </asp:Content>
