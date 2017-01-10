@@ -103,5 +103,13 @@ namespace WebServer1
             UpdateDeviceView(sender, e);
 
         }
+        protected void ChangeScheduleButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected void ChangeControllerState_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

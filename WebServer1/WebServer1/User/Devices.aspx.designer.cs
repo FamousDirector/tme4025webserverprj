@@ -58,15 +58,6 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.View DeviceView;
         
         /// <summary>
-        /// DeviceNameLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DeviceNameLabel;
-        
-        /// <summary>
         /// TitlePanel control.
         /// </summary>
         /// <remarks>
@@ -76,6 +67,15 @@ namespace WebServer1 {
         protected global::System.Web.UI.UpdatePanel TitlePanel;
         
         /// <summary>
+        /// DeviceNameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DeviceNameLabel;
+        
+        /// <summary>
         /// LastUpdatedTime control.
         /// </summary>
         /// <remarks>
@@ -83,6 +83,114 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LastUpdatedTime;
+        
+        /// <summary>
+        /// OnTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OnTime;
+        
+        /// <summary>
+        /// OffTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OffTime;
+        
+        /// <summary>
+        /// ChangeScheduleButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ChangeScheduleButton;
+        
+        /// <summary>
+        /// OnChangeControllerStateButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button OnChangeControllerStateButton;
+        
+        /// <summary>
+        /// OffChangeControllerStateButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button OffChangeControllerStateButton;
+        
+        /// <summary>
+        /// ChangeControllerStateLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ChangeControllerStateLabel;
+        
+        /// <summary>
+        /// CurrentTemperatureLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CurrentTemperatureLabel;
+        
+        /// <summary>
+        /// CurrentTemperature control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CurrentTemperature;
+        
+        /// <summary>
+        /// TemperatureStatsChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart TemperatureStatsChart;
+        
+        /// <summary>
+        /// CurrentPowerLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CurrentPowerLabel;
+        
+        /// <summary>
+        /// CurrentPower control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CurrentPower;
+        
+        /// <summary>
+        /// PowerStatsChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart PowerStatsChart;
         
         /// <summary>
         /// UpdateTimer control.

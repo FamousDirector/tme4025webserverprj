@@ -68,19 +68,20 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">                        
+                        <li class="navbar-inverse divider-vertical"></li>
                         <li id="AboutNav" runat="server" class="hybernate-fonts-main"><a runat="server" href="/About">About Us</a></li>
                         <li id="ProductsNav" runat="server"  class="hybernate-fonts-main"><a runat="server" href="/Products">Products</a></li>
                         <li id="DevicesNav" class="dropdown hybernate-fonts-main" runat="server"><a runat="server" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Devices</a>
                             <ul class="dropdown-menu">
-                                <li><a href="/User/Devices">Device List</a></li>
-                                <li><a href="/User/Devices/Add">Add Device...</a></li>
+                                <li><a href="/User/Devices">&#9776; Device List</a></li>
+                                <li><a href="/User/Devices/Add">&#10010; Add Device</a></li>
                                 <li role="separator" class="divider"></li>
                                 <asp:ListView ID="DeviceList" runat="server" DataSourceID="ListOfUserDevices">
                                     <LayoutTemplate>
                                         <asp:PlaceHolder ID="itemPlaceholder" runat="server" />                                   
                                     </LayoutTemplate>
                                     <ItemTemplate>
-                                        <li><a href="/User/Devices/<%# Eval("DeviceName") %>"><%# Eval("DeviceName") %></a></li>
+                                        <li><a href="/User/Devices/<%# Eval("DeviceName") %>">&#9900; <%# Eval("DeviceName") %></a></li>
                                     </ItemTemplate>
                                 </asp:ListView>
                                 <asp:SqlDataSource ID="ListOfUserDevices" runat="server" ConnectionString="<%$ ConnectionStrings:HybernateDatabaseConnectionString %>" SelectCommand="SELECT [DeviceName] FROM [UserDevices] WHERE ([UserName] = @UserName)">
@@ -92,12 +93,12 @@
                         </li>                            
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="RegisterNav" class="hybernate-fonts-secondary" runat="server"><a runat="server" href="~/Account/Register"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
-                        <li  id="LoginNav" runat="server" class="hybernate-fonts-secondary"><a runat="server"  href="~/Account/Login"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                        <li id="RegisterNav" class="hybernate-fonts-secondary" runat="server"><a runat="server" href="~/Account/Register">&#10010; Register</a></li>
+                        <li  id="LoginNav" runat="server" class="hybernate-fonts-secondary"><a runat="server"  href="~/Account/Login">&searr; Log In</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="ManagerNav" runat="server" class="hybernate-fonts-secondary"><a runat="server" href="~/Account/Manage" title="Manage your account"> <%: Context.User.Identity.GetUserName()  %></a></li>
-                        <li id="LogoutNav" runat="server" class="hybernate-fonts-secondary"><asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" /></li>
+                        <li id="ManagerNav" runat="server" class="hybernate-fonts-secondary"><a runat="server" href="~/Account/Manage" title="Manage your account"> &#9787; <%: Context.User.Identity.GetUserName()  %></a></li>
+                        <li id="LogoutNav" runat="server" class="hybernate-fonts-secondary"><asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log Out &nearr;" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" /></li>
                     </ul>
                 </div>
             </div>
@@ -106,7 +107,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <div class="panel-footer clearfix">
+        <div class="panel-footer top-divider clearfix">
             <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate</p>
             <p class="text-muted">We use our cookies in good faith to improve the user experience. Please keep them enabled.</p>
         </div>

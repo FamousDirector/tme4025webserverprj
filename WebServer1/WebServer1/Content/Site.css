@@ -41,11 +41,17 @@ input[type="select"] {
 }
 
 /*Probably a better way but TODO later*/
-h1, h2, h3, h4, h5{
+h1, h2, h3, h4, h5 h6{
   font-family: 'Open Sans Condensed', sans-serif !important;
   font-size: 250%;
 }
-p{
+
+.btn{
+    font-family: 'Raleway', sans-serif !important;
+    font-size: 100%;
+}
+
+span, p{
   font-family: 'Raleway', sans-serif !important;
   font-size: 125%;
 }
@@ -53,6 +59,25 @@ p{
 .container-custom{
     margin-left: 1%;
     margin-right: 1%    
+}
+
+.top-divider{
+    border-top-color:#ff6a00;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+.bottom-divider{
+    border-bottom-color:#ff6a00 !important;
+    border-bottom-width: 2px !important;
+    border-bottom-style: solid !important;
+}
+
+.btn-off{
+    color:#ffffff;
+    background-color: #000000;
+}
+.btn-warning{
+    background-color: #ff6a00;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -65,4 +90,22 @@ p{
     }
 }
 
+/* Add Vertical Line in nav bar. ref:http://stackoverflow.com/questions/19203816/vertical-divider-doesnt-work-in-bootstrap-3 */
+.navbar .divider-vertical {
+    height: 50px;
+    margin: 0 9px;
+    border-right: 1px solid #ffffff;
+    border-left: 1px solid #f2f2f2;
+}
+
+.navbar-inverse .divider-vertical {
+    border-right-color: #ff6a00;
+    border-left-color: #000000;
+}
+
+@media (max-width: 767px) {
+    .navbar-collapse .nav > .divider-vertical {
+        display: none;
+     }
+}
 
