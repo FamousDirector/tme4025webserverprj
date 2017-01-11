@@ -19,8 +19,18 @@ namespace WebServer1.User
     public class DeviceService : System.Web.Services.WebService
     {
         [WebMethod]
-        public List<object> fillTemperatureChart(string tempdate, string devicename)
+        public List<object> fillTemperatureChart(string tempdate, string devicename, string timzoneoffset)
         {
+            int offset = 0;
+            try
+            {
+                offset = int.Parse(timzoneoffset);
+            }
+            catch
+            {
+
+            }
+
 
             //fill Chart (ref:http://www.c-sharpcorner.com/UploadFile/0c1bb2/spline-and-line-chart-in-Asp-Net/)
             DataSet ds = DatabaseCalls.GetTemperatureDataForChart(devicename, User.Identity.Name, tempdate);
@@ -34,7 +44,7 @@ namespace WebServer1.User
             {
                 //storing Values for X axis  
                 DateTime time = (DateTime)chartData.Rows[count]["EntryTime"];                
-                labels.Add(time.AddMinutes(0).ToShortTimeString());
+                labels.Add(time.AddMinutes(offset).ToShortTimeString());
 
                 //storing values for Y Axis  
                 temperature.Add(Convert.ToInt32(chartData.Rows[count]["Temperature"]));
