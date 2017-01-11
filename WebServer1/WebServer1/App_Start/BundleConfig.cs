@@ -41,6 +41,13 @@ namespace WebServer1
                     Path = "~/Scripts/respond.min.js",
                     DebugPath = "~/Scripts/respond.js",
                 });
+            ScriptManager.ScriptResourceMapping.AddDefinition(
+                "chart",
+                new ScriptResourceDefinition
+                {
+                    Path = "~/Scripts/chart.min.js",
+                    DebugPath = "~/Scripts/chart.js",
+                });
         }
     }
 }

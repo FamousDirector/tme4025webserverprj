@@ -3,6 +3,63 @@
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <script>
+        $(document).ready(function () {
+            $("#btn_temperature_chart").on('click', function () {
+                var tempdate = $("#temp_date").val();
+                var devicename = $("#MainContent_DeviceNameLabel").text();
+                var jsonData = JSON.stringify({
+                    tempdate: tempdate,
+                    devicename: devicename
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "../DeviceService.asmx/fillTemperatureChart",
+                    data: jsonData,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: OnSuccess_,
+                    error: OnErrorCall_
+                });
+
+                function OnSuccess_(reponse) {
+                    //console.log(response.d); //debug
+                    var aData = reponse.d;
+                    var aLabels = aData[0];
+                    var aDatasets1 = aData[1];
+
+                    var data = {
+                        labels: aLabels,
+                        datasets: [{
+                            label: "Temperature",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: aDatasets1
+                        }]
+                    };
+
+                    var ctx = $("#TemperatureChart").get(0).getContext('2d');
+                    ctx.canvas.height = 300;  // setting height of canvas
+                    ctx.canvas.width = 500; // setting width of canvas
+                    var lineChart = new Chart(ctx, {
+                        type: 'line',
+                        data: data,
+                        options: {
+                            responsive: false
+                        }
+                    });
+                }
+                function OnErrorCall_(repo) {
+                    alert("Woops something went wrong, pls try later !");
+                }
+            });
+        });
+    </script>
 
     <div id="maincontent" class="container-fluid page-contentwrapper">
         <br />
@@ -73,16 +130,9 @@
                                         <div class="panel-body top-divider"">
                                             <asp:Label ID="CurrentTemperatureLabel" CssClass="hybernate-fonts-secondary" runat="server" Text="Current Temperature:"></asp:Label>
                                             <asp:Label ID="CurrentTemperature" CssClass="hybernate-fonts-secondary" runat="server" Text="28&#8451;"></asp:Label>
-                                            <asp:Chart ID="TemperatureStatsChart" runat="server">
-                                                <Series>
-                                                    <asp:Series ChartType="Spline" Name="Series1">
-                                                    </asp:Series>
-                                                </Series>
-                                                <ChartAreas>
-                                                    <asp:ChartArea Name="TemperatureStatsChartArea">
-                                                    </asp:ChartArea>
-                                                </ChartAreas>
-                                            </asp:Chart>
+                                            <input  id="temp_date" type="date"/>
+                                            <input id="btn_temperature_chart" type="button" class="btn btn-xs" value="Show Graph" />
+                                            <canvas id="TemperatureChart"> </canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +146,7 @@
                                             <asp:Label ID="CurrentPower" CssClass="hybernate-fonts-secondary" runat="server" Text="9000 W"></asp:Label>
                                             <asp:Chart ID="PowerStatsChart" runat="server">
                                                 <Series>
-                                                    <asp:Series ChartType="Spline" Name="Series1">
+                                                    <asp:Series Name="Series1">
                                                     </asp:Series>
                                                 </Series>
                                                 <ChartAreas>
@@ -115,7 +165,7 @@
                         </Triggers>
                     </asp:UpdatePanel>
                 </div>
-                <asp:Timer ID="UpdateTimer" runat="server" OnTick="UpdateTimer_Tick" Interval="10000"></asp:Timer>
+                <asp:Timer ID="UpdateTimer" runat="server" OnTick="UpdateTimer_Tick" Interval="300000"></asp:Timer>
             </asp:View>
             <asp:View ID="NewDeviceView" runat="server">
                 <div class="jumbotron">

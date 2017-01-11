@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 
 namespace WebServer1
@@ -89,13 +91,17 @@ namespace WebServer1
         }
         protected void UpdateDeviceView(object sender, EventArgs e)
         {
+            //add device name
             string path = HttpContext.Current.Request.Url.AbsolutePath;
             string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
             DeviceNameLabel.Text = devicename;
 
-            LastUpdatedTime.Text = "Last updated at: " + DateTime.Now.ToLongTimeString();
+            //Last Update Time
+            LastUpdatedTime.Text = "Last connected at: " + DateTime.Now.ToLongTimeString();
 
-            int timezone = ExtraCommands.GetTimeZoneOffsetMinutes(Request);
+            //Dates
+            //temp_date.Value = DateTime.Today.ToString("yyyy-MM-dd");
+
         }
 
         protected void UpdateTimer_Tick(object sender, EventArgs e)
@@ -110,6 +116,6 @@ namespace WebServer1
         protected void ChangeControllerState_Click(object sender, EventArgs e)
         {
 
-        }
+        }        
     }
 }
