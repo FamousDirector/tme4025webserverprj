@@ -4,13 +4,28 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script>
+        //set todays date
+        Date.prototype.toDateInputValue = (function () {
+            var local = new Date(this);
+            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+            return local.toJSON().slice(0, 10);
+        });
+        
+
+        //btn for tmp chart
         $(document).ready(function () {
+            //for input dates
+            $('#temp_date').val(new Date().toDateInputValue());
+
             $("#btn_temperature_chart").on('click', function () {
                 var tempdate = $("#temp_date").val();
                 var devicename = $("#MainContent_DeviceNameLabel").text();
+                var local = new Date();
+                var timzoneoffset = local.getTimezoneOffset();
                 var jsonData = JSON.stringify({
                     tempdate: tempdate,
-                    devicename: devicename
+                    devicename: devicename,
+                    timzoneoffset: timzoneoffset
                 });
 
                 $.ajax({
