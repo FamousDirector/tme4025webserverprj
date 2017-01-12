@@ -15,7 +15,7 @@ namespace WebServer1
         {
             //determine route
             string path = HttpContext.Current.Request.Url.AbsolutePath;
-            string route = path.Remove(0,path.LastIndexOf('/')+1);
+            string route = path.Remove(0, path.LastIndexOf('/') + 1);
 
             switch (route) //show view based on route
             {
@@ -24,22 +24,22 @@ namespace WebServer1
                     break;
                 case "Add":
                     MainMultiView.ActiveViewIndex = 2;
-                    break;               
+                    break;
                 default:
                     MainMultiView.ActiveViewIndex = 1;
                     UpdateDeviceView(sender, e);
                     break;
             }
-            
+
         }
         protected void AddNewDeviceViewButton_Click(object sender, EventArgs e)
         {
-           Response.RedirectToRoute("DeviceRoute", new { device = "Add" });
+            Response.RedirectToRoute("DeviceRoute", new { device = "Add" });
         }
         protected void ShowThisDevice_Click(object sender, EventArgs e)
         {
             string devicename = (sender as Button).Text;
-            
+
             Response.RedirectToRoute("DeviceRoute", new { device = devicename });
 
         }
@@ -59,7 +59,7 @@ namespace WebServer1
             //TODO Check if that Name exists for this user
             //if does throw error
         }
-        
+
         protected void DeviceNameTextBox_TextChanged(object sender, EventArgs e)
         {
             //TODO Check if that Name exists for this user
@@ -73,7 +73,7 @@ namespace WebServer1
             //TODO Check if that UID exists
             //TODO Check if that Name exists
 
-            DatabaseCalls.AddNewDeviceToDatabase(User.Identity.Name,uid,name);
+            DatabaseCalls.AddNewDeviceToDatabase(User.Identity.Name, uid, name);
 
             Response.RedirectToRoute("DeviceRoute", new { device = name });
         }
@@ -96,26 +96,105 @@ namespace WebServer1
             string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
             DeviceNameLabel.Text = devicename;
 
-            //Last Update Time
-            LastUpdatedTime.Text = "Last connected at: " + DateTime.Now.ToLongTimeString();
+            //timezone offset
+            int timezoneoffset = ExtraCommands.GetTimeZoneOffsetMinutes(Request);
 
-            //Dates
-            //temp_date.Value = DateTime.Today.ToString("yyyy-MM-dd");
+            //Last Update Time
+            DateTime lastupdatetimeutc = DatabaseCalls.GetNewestConnectionDate(devicename);
+            LastUpdatedTime.Text = "Last connected at " + lastupdatetimeutc.AddMinutes(timezoneoffset).ToShortTimeString() + " on " + lastupdatetimeutc.AddMinutes(timezoneoffset).ToShortDateString();
+
+            //State
+            if (!Page.IsPostBack)
+            {
+                if (DatabaseCalls.GetNewestDeviceState(devicename) == "ON")
+                {
+                    OnChangeControllerStateButton.CssClass = "btn btn-lg btn-warning";
+                    OffChangeControllerStateButton.CssClass = "btn btn-lg";
+                }
+                else
+                {
+                    OnChangeControllerStateButton.CssClass = "btn btn-lg";
+                    OffChangeControllerStateButton.CssClass = "btn btn-lg btn-off";
+                }
+            }
+
+            //Power
+            CurrentPower.Text = DatabaseCalls.GetNewestPowerValue(devicename).ToString() + " W";
+
+            //Temperature
+            CurrentTemperature.Text = DatabaseCalls.GetNewestTemperatureValue(devicename).ToString() + " °C";
+
 
         }
 
-        protected void UpdateTimer_Tick(object sender, EventArgs e)
+        protected void ChangeControllerStateOn_Click(object sender, EventArgs e)
         {
-            UpdateDeviceView(sender, e);
+            string path = HttpContext.Current.Request.Url.AbsolutePath;
+            string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
 
+            OnChangeControllerStateButton.CssClass = "btn btn-lg btn-warning";
+            OffChangeControllerStateButton.CssClass = "btn btn-lg";
+            if (DatabaseCalls.GetNewestDeviceState(devicename) == "ON")
+            {
+                ChangeControllerStateLabel.Visible = false;
+                //TODO database call to turn on
+            }
+            else
+            {
+                ChangeControllerStateLabel.Visible = true;
+                ChangeControllerStateLabel.Text = devicename + " will turn on after its next connection.";
+                //TODO database call to turn on
+            }
+        }
+        protected void ChangeControllerStateOff_Click(object sender, EventArgs e)
+        {
+            string path = HttpContext.Current.Request.Url.AbsolutePath;
+            string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
+
+            OnChangeControllerStateButton.CssClass = "btn btn-lg";
+            OffChangeControllerStateButton.CssClass = "btn btn-lg btn-off";
+
+            if (DatabaseCalls.GetNewestDeviceState(devicename) == "OFF")
+            {
+                ChangeControllerStateLabel.Visible = false;
+                //TODO database call to turn off
+            }
+            else
+            {
+                ChangeControllerStateLabel.Visible = true;
+                ChangeControllerStateLabel.Text = devicename + " will turn off after its next connection.";
+                //TODO database call to turn off
+            }
         }
         protected void ChangeScheduleButton_Click(object sender, EventArgs e)
         {
+            if (SetNewScheduleButton.Visible == false)
+            {
+                ChangeScheduleButton.CssClass = "btn btn-xs pull-right btn-off";
+                SetNewScheduleButton.Visible = true;
+                newSchedule.Visible = true;
+                staticSchedule.Visible = false;
+            }
+            else
+            {
+                ChangeScheduleButton.CssClass = "btn btn-xs pull-right";
+                SetNewScheduleButton.Visible = false;
+                newSchedule.Visible = false;
+                staticSchedule.Visible = true;
+            }
+        }
+        protected void SetNewScheduleButton_Click(object sender, EventArgs e)
+        {
+            string path = HttpContext.Current.Request.Url.AbsolutePath;
+            string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
+
+            ChangeScheduleButton.CssClass = "btn btn-xs pull-right";
+            SetNewScheduleButton.Visible = false;
+
+            newSchedule.Visible = false;
+            staticSchedule.Visible = true;
 
         }
-        protected void ChangeControllerState_Click(object sender, EventArgs e)
-        {
 
-        }        
     }
 }

@@ -79,6 +79,12 @@ span, p{
 .btn-warning{
     background-color: #ff6a00;
 }
+.btn-label{
+    border-right-color: #000000!important;
+    border-right-width: 2px !important;
+    border-right-style: solid !important;
+    color: #000000 !important;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
