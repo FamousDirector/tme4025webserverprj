@@ -1,6 +1,36 @@
 ﻿/*Add Fonts*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway);
 
+@font-face {
+  font-family: 'hybernate';
+  src:
+    url('fonts/hybernate.ttf') format('truetype'),
+    url('fonts/hybernate.woff') format('woff'),
+    url('fonts/hybernate.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'hybernate' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-hybernate_icon:before {
+  content: "\e900";
+  font-size: 60%;
+}
+
 .hybernate-fonts-main{
   font-family: 'Open Sans Condensed', sans-serif !important;
   font-size: 250%;
@@ -84,6 +114,15 @@ span, p{
     border-right-width: 2px !important;
     border-right-style: solid !important;
     color: #000000 !important;
+}
+
+.navbar-align{
+    padding-top:1px;
+}
+
+.navbar-brand{
+    padding: 0px 15px;
+
 }
 
 /* Responsive: Portrait tablets and up */

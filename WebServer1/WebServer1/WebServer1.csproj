@@ -215,7 +215,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\hybernate.svg" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\logo.svg" />
     <Content Include="images\logo.ico" />
     <Content Include="images\logo.png" />
     <Content Include="Scripts\Chart.js" />
@@ -307,6 +309,8 @@
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\hybernate.ttf" />
+    <Content Include="Content\fonts\hybernate.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Products.aspx" />
     <Content Include="Scripts\bootstrap.js" />
