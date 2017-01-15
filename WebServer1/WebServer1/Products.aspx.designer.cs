@@ -10,6 +10,60 @@
 namespace WebServer1 {
     
     
-    public partial class _Default {
+    public partial class Products {
+        
+        /// <summary>
+        /// CustomerReviewsPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel CustomerReviewsPanel;
+        
+        /// <summary>
+        /// CustomerReviewMultiView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView CustomerReviewMultiView;
+        
+        /// <summary>
+        /// CustomerReview1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View CustomerReview1;
+        
+        /// <summary>
+        /// LastReivewButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LastReivewButton;
+        
+        /// <summary>
+        /// NextReivewButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button NextReivewButton;
+        
+        /// <summary>
+        /// CustomerReviewUpdateTimer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer CustomerReviewUpdateTimer;
     }
 }
