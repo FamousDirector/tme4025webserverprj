@@ -46,7 +46,9 @@ namespace WebServer1.User
                 DateTime time = (DateTime)chartData.Rows[count]["EntryTime"];
                 if(time.AddMinutes(-offset).Date == DateTime.Parse(date).Date) //ensure its todays date
                 {
-                    labels.Add(time.AddMinutes(-offset).ToShortTimeString());
+                    //X axis
+                    labels.Add(time.AddMinutes(-offset).ToString("yyyy-MM-dd HH:mm:ss"));
+
                     //storing values for Y Axis  
                     temperature.Add(Convert.ToInt32(chartData.Rows[count]["Temperature"]));
                 }              
@@ -83,11 +85,12 @@ namespace WebServer1.User
 
             for (int count = 0; count < chartData.Rows.Count; count++)
             {
-                //storing Values for X axis  
                 DateTime time = (DateTime)chartData.Rows[count]["EntryTime"];
                 if (time.AddMinutes(-offset).Date == DateTime.Parse(date).Date) //ensure its todays date
                 {
-                    labels.Add(time.AddMinutes(-offset).ToShortTimeString());
+                    //X axis
+                    labels.Add(time.AddMinutes(-offset).ToString("yyyy-MM-dd HH:mm:ss"));
+
                     //storing values for Y Axis  
                     power.Add(Convert.ToInt32(chartData.Rows[count]["Power"]));
                 }

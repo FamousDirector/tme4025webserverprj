@@ -65,18 +65,18 @@
                         datasets: [{
                             label: "Temperature (°C)",
                             lineTension: 0.3,
-                            backgroundColor: fillPatternTemp,
-                            borderColor: borderPatternTemp,
+                            backgroundColor: "rgba(255, 106, 0, 0.4)",
+                            borderColor: "rgb(255, 106, 0)",
                             borderCapStyle: 'butt',
                             borderDash: [],
                             borderDashOffset: 0.0,
                             borderJoinStyle: 'miter',
                             pointBorderColor: "#3A3A3A",
-                            pointBackgroundColor: borderPatternTemp,
+                            pointBackgroundColor: "rgb(255, 106, 0)",
                             pointBorderWidth: 1,
                             pointHoverRadius: 5,
-                            pointHoverBackgroundColor: borderPatternTemp,
-                            pointHoverBorderColor: borderPatternTemp,
+                            pointHoverBackgroundColor: "rgb(255, 106, 0)",
+                            pointHoverBorderColor: "rgb(255, 106, 0)",
                             pointHoverBorderWidth: 2,
                             pointRadius: 1,
                             pointHitRadius: 10,
@@ -92,8 +92,38 @@
                             scales: {
                                 xAxes: [{
                                     ticks: {
-                                        min: 0,
-                                        max: 24
+                                        callback: function (tick) {
+                                            var time = new Date(tick);
+                                            var hour = time.getHours();
+                                            var minutes = time.getMinutes();
+                                            var ampm = "AM";
+                                            if (minutes < 15) {
+                                                minutes = "00";
+                                            } else if (minutes < 45) {
+                                                minutes = "30";
+                                            } else {
+                                                minutes = "00";
+                                                ++hour;
+                                            }
+                                            if (hour > 23) {
+                                                hour = 12;
+                                            } else if (hour > 12) {
+                                                hour = hour - 12;
+                                                ampm = "PM";
+                                            } else if (hour == 12) {
+                                                ampm = "PM";
+                                            } else if (hour == 0) {
+                                                hour = 12;
+                                            }
+                                            else
+                                            {
+
+                                            }
+
+                                            var newtick = (hour + ":" + minutes + " " + ampm);
+
+                                            return newtick;
+                                        }
                                             }
                                         }]
                                 }
@@ -150,8 +180,8 @@
                             datasets: [{
                                 label: "Power (W)",
                                 lineTension: 0.3,
-                                backgroundColor: fillPatternPower,
-                                borderColor: borderPatternPower,
+                                backgroundColor: "rgba(255, 106, 0, 0.4)",
+                                borderColor: "rgb(255, 106, 0)",
                                 borderCapStyle: 'butt',
                                 borderDash: [],
                                 borderDashOffset: 0.0,
@@ -160,8 +190,8 @@
                                 pointBackgroundColor: "rgba(249, 170, 117, 0.25)",
                                 pointBorderWidth: 1,
                                 pointHoverRadius: 5,
-                                pointHoverBackgroundColor: borderPatternPower,
-                                pointHoverBorderColor: borderPatternPower,
+                                pointHoverBackgroundColor: "rgb(255, 106, 0)",
+                                pointHoverBorderColor: "rgb(255, 106, 0)",
                                 pointHoverBorderWidth: 2,
                                 pointRadius: 1,
                                 pointHitRadius: 10,
@@ -177,8 +207,39 @@
                                 scales: {
                                     xAxes: [{
                                         ticks: {
-                                            min: 0,
-                                            max: 24
+                                            autoSkip: true,
+                                            autoSkipPadding:10,
+                                            callback: function (tick) {
+                                                var time = new Date(tick);
+                                                var hour = time.getHours();
+                                                var minutes = time.getMinutes();
+                                                var ampm = "AM";
+                                                if (minutes < 15) {
+                                                    minutes = "00";
+                                                } else if (minutes < 45) {
+                                                    minutes = "30";
+                                                } else {
+                                                    minutes = "00";
+                                                    ++hour;
+                                                }
+                                                if (hour > 23) {
+                                                    hour = 12;
+                                                } else if (hour > 12) {
+                                                    hour = hour - 12;
+                                                    ampm = "PM";
+                                                } else if (hour == 12) {
+                                                    ampm = "PM";
+                                                } else if (hour == 0) {
+                                                    hour = 12;
+                                                }
+                                                else {
+
+                                                }
+
+                                                var newtick = (hour + ":" + minutes + " " + ampm);
+
+                                                return newtick;
+                                            }
                                         }
                                     }]
                                 }
@@ -284,7 +345,7 @@
                                             </div>
                                             <div runat="server" id="staticSchedule" class="row">
                                                 <div class="col-md-4">
-                                                    <h5>Off at:</h5>
+                                                    <h5>OFF</h5>
                                                     <asp:Label ID="OffTime" CssClass="hybernate-fonts-main" runat="server" Text="OffTime"></asp:Label>
                                                 </div>                                        
                                                 <div class="col-md-2">
@@ -292,7 +353,7 @@
                                                     <span class="hybernate-fonts-main">&#8594; </span>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <h5>On at:</h5>
+                                                    <h5>ON</h5>
                                                     <asp:Label ID="OnTime" CssClass="hybernate-fonts-main" runat="server" Text="OnTime"></asp:Label>
                                                 </div>
                                             </div>

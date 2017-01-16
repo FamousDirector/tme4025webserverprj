@@ -1,7 +1,5 @@
 ﻿/*Previous Colour Choices
-    Orange: #0975C7
-    Green: #0975C7
-    Blue: #0975C7
+    Orange: #ff6a00
 */
 
 /*Add Fonts*/
@@ -108,17 +106,17 @@ span, p{
 }
 
 .top-divider{
-    border-top-color:#0975C7;
+    border-top-color:#ff6a00;
     border-top-width: 1px;
     border-top-style: solid;
 }
 .bottom-divider{
-    border-bottom-color:#0975C7 !important;
+    border-bottom-color:#ff6a00 !important;
     border-bottom-width: 2px !important;
     border-bottom-style: solid !important;
 }
 .coloured-hr{
-    background-color: #0975C7;
+    background-color: #ff6a00;
     height: 1px;
 }
 
@@ -128,8 +126,8 @@ span, p{
 }
 .btn-on{
   color: #ffffff;
-  background-color: #0975C7;
-  border-color: #0975C7;
+  background-color: #ff6a00;
+  border-color: #ff6a00;
 }
 .btn-label{
     border-right-color: #000000!important;
@@ -166,7 +164,7 @@ span, p{
 }
 
 .navbar-inverse .divider-vertical {
-    border-right-color: #0975C7;
+    border-right-color: #ff6a00;
     border-left-color: #000000;
 }
 
