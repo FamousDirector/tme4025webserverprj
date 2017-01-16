@@ -11,7 +11,6 @@
             return local.toJSON().slice(0, 10);
         });
         
-
         //btn for tmp chart
         $(document).ready(function () {
             //for input dates
@@ -61,7 +60,6 @@
                     borderPatternTemp.addColorStop(0.5, "rgba(249, 170, 117, 1)");
                     borderPatternTemp.addColorStop(1, "rgba(150, 177, 247, 1)");
 
-
                     var data = {
                         labels: aLabels,
                         datasets: [{
@@ -90,7 +88,15 @@
                         type: 'line',
                         data: data,
                         options: {
-                            responsive: true
+                            responsive: true,
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        min: 0,
+                                        max: 24
+                                            }
+                                        }]
+                                }
                         }
                     });
                 }
@@ -167,7 +173,15 @@
                             type: 'line',
                             data: data,
                             options: {
-                                responsive: true
+                                responsive: true,
+                                scales: {
+                                    xAxes: [{
+                                        ticks: {
+                                            min: 0,
+                                            max: 24
+                                        }
+                                    }]
+                                }
                             }
                         });
                     }
@@ -235,48 +249,55 @@
                         </div>
                      <div class="row ">
                         <div class="col-md-3">
-                            <asp:UpdatePanel runat="server" ID="UpdatePanel1">
+                            <asp:UpdatePanel runat="server" ID="NewSchedulePanel">
                                 <ContentTemplate>
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4>Schedule</h4>
                                         </div>
                                         <div class="panel-body top-divider">
-                                        <asp:Button ID="ChangeScheduleButton" CssClass="btn btn-xs pull-right" runat="server" Text="⚙" OnClick="ChangeScheduleButton_Click" />
-                                                <br />
+                                              <div class="row">
+                                                <div class="col-xs-10">
+                                                </div>
+                                                <div class="col-xs-1">
+                                                  <asp:Button ID="ChangeScheduleButton" CssClass="btn btn-xs" runat="server" Text="⚙" OnClick="ChangeScheduleButton_Click" />
+                                                </div>
+                                              </div>                                            
                                             <div runat="server" id="newSchedule" visible="false" class="row">
                                                 <div class="col-md-5">
-                                                    <h5>Off at:</h5>
+                                                    <h5>Set new off time at:</h5>
                                                     <div class="input-group input-group-sm">
                                                         <span class="input-group-addon">🕘</span>
-                                                        <input runat="server" class="form-control" id="offtimeinput" type="time"/>
+                                                        <asp:TextBox ID="newofftime" CssClass="form-control" runat="server" type="time"></asp:TextBox>
                                                     </div>
                                                 </div>                                        
-                                                <div class="col-md-2">
-                                                    <span> | </span>
+                                                <div class="col-md-1">
+                                                    <br />
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <h5>On at:</h5>
+                                                    <h5>Set new on time at:</h5>
                                                     <div class="input-group input-group-sm">
                                                         <span class="input-group-addon">🕔</span>
-                                                        <input runat="server" class="form-control" id="ontimeinput" type="time"/>
+                                                        <asp:TextBox ID="newontime" CssClass="form-control" runat="server" type="time"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div runat="server" id="staticSchedule" class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-4">
                                                     <h5>Off at:</h5>
-                                                    <asp:Label ID="OffTime" CssClass="" runat="server" Text="OffTime"></asp:Label>
+                                                    <asp:Label ID="OffTime" CssClass="hybernate-fonts-main" runat="server" Text="OffTime"></asp:Label>
                                                 </div>                                        
                                                 <div class="col-md-2">
-                                                    <span> | </span>
+                                                    <br />
+                                                    <span class="hybernate-fonts-main">&#8594; </span>
                                                 </div>
                                                 <div class="col-md-5">
                                                     <h5>On at:</h5>
-                                                    <asp:Label ID="OnTime" CssClass="" runat="server" Text="OnTime"></asp:Label>
+                                                    <asp:Label ID="OnTime" CssClass="hybernate-fonts-main" runat="server" Text="OnTime"></asp:Label>
                                                 </div>
                                             </div>
-                                            <asp:Button ID="SetNewScheduleButton" Visible="false" CssClass="btn btn-warning" runat="server" Text="Set" OnClick="SetNewScheduleButton_Click" />
+                                            <br />
+                                            <asp:Button ID="SetNewScheduleButton" Visible="false" CssClass="btn btn-on" runat="server" Text="Set" OnClick="SetNewScheduleButton_Click" />
                                         </div>
                                     </div>
                                 </ContentTemplate>
@@ -328,13 +349,15 @@
                 </div>
             </asp:View>
             <asp:View ID="NewDeviceView" runat="server">
-                <div class="jumbotron">
-                    <h3>Add New Device</h3>
-                    <h5>Device UID:</h5>
-                    <asp:TextBox ID="UIDTextbox" CssClass="form-control" runat="server" OnTextChanged="UIDTextbox_TextChanged"></asp:TextBox>
-                    <h5>Device Name:</h5>
-                    <asp:TextBox ID="NameTextbox" CssClass="form-control" runat="server" OnTextChanged="NameTextBox_TextChanged"></asp:TextBox>
-                    <asp:Button ID="AddNewDeviceButton" CssClass="btn btn-primary btn-xs" runat="server" Text="Add" OnClick="AddNewDeviceButton_Click" />
+                <div class="container">
+                    <div class="jumbotron">
+                        <h3>Add New Device</h3>
+                        <h5>Device UID:</h5>
+                        <asp:TextBox ID="UIDTextbox" CssClass="form-control" runat="server" OnTextChanged="UIDTextbox_TextChanged"></asp:TextBox>
+                        <h5>Device Name:</h5>
+                        <asp:TextBox ID="NameTextbox" CssClass="form-control" runat="server" OnTextChanged="NameTextBox_TextChanged"></asp:TextBox>
+                        <asp:Button ID="AddNewDeviceButton" CssClass="btn btn-primary btn-xs" runat="server" Text="Add" OnClick="AddNewDeviceButton_Click" />
+                    </div>
                 </div>
             </asp:View>
         </asp:MultiView>

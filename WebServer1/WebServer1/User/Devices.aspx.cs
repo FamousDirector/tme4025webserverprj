@@ -108,7 +108,7 @@ namespace WebServer1
             {
                 if (DatabaseCalls.GetNewestDeviceState(devicename) == "ON")
                 {
-                    OnChangeControllerStateButton.CssClass = "btn btn-lg btn-warning";
+                    OnChangeControllerStateButton.CssClass = "btn btn-lg btn-on";
                     OffChangeControllerStateButton.CssClass = "btn btn-lg";
                 }
                 else
@@ -117,6 +117,18 @@ namespace WebServer1
                     OffChangeControllerStateButton.CssClass = "btn btn-lg btn-off";
                 }
             }
+
+            //Times
+            DateTime offtime = DatabaseCalls.GetOffTimeValue(devicename, timezoneoffset);
+            DateTime ontime = DatabaseCalls.GetOnTimeValue(devicename, timezoneoffset);
+
+            OffTime.Text = offtime.ToShortTimeString();
+            OnTime.Text = ontime.ToShortTimeString();
+
+            
+
+            newofftime.Text = offtime.ToString("HH:mm");
+            newontime.Text = ontime.ToString("HH:mm");      
 
             //Power
             CurrentPower.Text = DatabaseCalls.GetNewestPowerValue(devicename).ToString() + " W";
@@ -132,18 +144,18 @@ namespace WebServer1
             string path = HttpContext.Current.Request.Url.AbsolutePath;
             string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
 
-            OnChangeControllerStateButton.CssClass = "btn btn-lg btn-warning";
+            OnChangeControllerStateButton.CssClass = "btn btn-lg btn-on";
             OffChangeControllerStateButton.CssClass = "btn btn-lg";
             if (DatabaseCalls.GetNewestDeviceState(devicename) == "ON")
             {
                 ChangeControllerStateLabel.Visible = false;
-                //TODO database call to turn on
+                DatabaseCalls.SetNewestDeviceState(devicename, 1);
             }
             else
             {
                 ChangeControllerStateLabel.Visible = true;
                 ChangeControllerStateLabel.Text = devicename + " will turn on after its next connection.";
-                //TODO database call to turn on
+                DatabaseCalls.SetNewestDeviceState(devicename, 1);
             }
         }
         protected void ChangeControllerStateOff_Click(object sender, EventArgs e)
@@ -157,27 +169,27 @@ namespace WebServer1
             if (DatabaseCalls.GetNewestDeviceState(devicename) == "OFF")
             {
                 ChangeControllerStateLabel.Visible = false;
-                //TODO database call to turn off
+                DatabaseCalls.SetNewestDeviceState(devicename, 0);
             }
             else
             {
                 ChangeControllerStateLabel.Visible = true;
                 ChangeControllerStateLabel.Text = devicename + " will turn off after its next connection.";
-                //TODO database call to turn off
+                DatabaseCalls.SetNewestDeviceState(devicename, 0);
             }
         }
         protected void ChangeScheduleButton_Click(object sender, EventArgs e)
         {
             if (SetNewScheduleButton.Visible == false)
             {
-                ChangeScheduleButton.CssClass = "btn btn-xs pull-right btn-off";
+                ChangeScheduleButton.CssClass = "btn btn-xs btn-off";
                 SetNewScheduleButton.Visible = true;
                 newSchedule.Visible = true;
                 staticSchedule.Visible = false;
             }
             else
             {
-                ChangeScheduleButton.CssClass = "btn btn-xs pull-right";
+                ChangeScheduleButton.CssClass = "btn btn-xs ";
                 SetNewScheduleButton.Visible = false;
                 newSchedule.Visible = false;
                 staticSchedule.Visible = true;
@@ -188,11 +200,19 @@ namespace WebServer1
             string path = HttpContext.Current.Request.Url.AbsolutePath;
             string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
 
-            ChangeScheduleButton.CssClass = "btn btn-xs pull-right";
+            int timezoneoffset = ExtraCommands.GetTimeZoneOffsetMinutes(Request);
+
+            ChangeScheduleButton.CssClass = "btn btn-xs ";
             SetNewScheduleButton.Visible = false;
 
             newSchedule.Visible = false;
             staticSchedule.Visible = true;
+
+            string offtime = Request.Form[newofftime.UniqueID];
+            string ontime = Request.Form[newontime.UniqueID];
+
+            DatabaseCalls.SetOffTimeValue(offtime, devicename, timezoneoffset);
+            DatabaseCalls.SetOnTimeValue(ontime, devicename, timezoneoffset);
 
         }
 

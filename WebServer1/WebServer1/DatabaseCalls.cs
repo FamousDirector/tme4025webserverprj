@@ -268,6 +268,35 @@ namespace WebServer1
             }
             return state;
         }
+        internal static void SetNewestDeviceState(string devicename, int newstate)
+        {           
+            string deviceuid = getUIDFromDeviceName(devicename);
+
+            using (SqlConnection myConnection = getDatabaseConnection())
+            {
+                using (SqlCommand myCommand = new SqlCommand())
+                {
+                    string cmdString = "UPDATE [NewRelayState] SET [NewState]=@newstate " +
+                                           "WHERE UID = @deviceuid " +
+                                           "IF @@rowcount = 0 " +
+                                           "BEGIN " +
+                                           "INSERT INTO [NewRelayState] (UID, NewState) VALUES(@deviceuid,@newstate) END";
+                    myCommand.Connection = myConnection;
+                    myCommand.CommandText = cmdString;
+                    myCommand.Parameters.AddWithValue("@deviceuid", deviceuid);
+                    myCommand.Parameters.AddWithValue("@newstate", newstate);
+
+                    try
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    catch (SqlException error)
+                    {
+                        //TODO handle error properly
+                    }
+                }
+            }
+        }
         internal static int GetNewestPowerValue(string devicename)
         {
             int power = 0;
@@ -325,6 +354,118 @@ namespace WebServer1
                 }
             }
             return temperature;
+        }
+        internal static DateTime GetOffTimeValue(string devicename, int offset)
+        {
+            DateTime offtime = DateTime.Today;            
+            string deviceuid = getUIDFromDeviceName(devicename);
+
+            using (SqlConnection myConnection = getDatabaseConnection())
+            {
+                using (SqlCommand myCommand = new SqlCommand())
+                {
+                    string cmdString = "SELECT ScheduledOffTimeSeconds FROM [DeviceSchedules] WHERE uid=@deviceuid";
+                    myCommand.Connection = myConnection;
+                    myCommand.CommandText = cmdString;
+                    myCommand.Parameters.AddWithValue("@deviceuid", deviceuid);
+                    try
+                    {
+                        offtime = offtime.AddSeconds((int)myCommand.ExecuteScalar());
+                    }
+                    catch (SqlException error)
+                    {
+                        //TODO handle error properly
+                    }
+                }
+            }
+            return offtime.AddMinutes(offset);
+        }
+        internal static DateTime GetOnTimeValue(string devicename, int offset)
+        {
+            DateTime ontime = DateTime.Today;
+            string deviceuid = getUIDFromDeviceName(devicename);
+
+            using (SqlConnection myConnection = getDatabaseConnection())
+            {
+                using (SqlCommand myCommand = new SqlCommand())
+                {
+                    string cmdString = "SELECT ScheduledOnTimeSeconds FROM [DeviceSchedules] WHERE uid=@deviceuid";
+                    myCommand.Connection = myConnection;
+                    myCommand.CommandText = cmdString;
+                    myCommand.Parameters.AddWithValue("@deviceuid", deviceuid);
+                    try
+                    {
+                        ontime = ontime.AddSeconds((int)myCommand.ExecuteScalar());
+                    }
+                    catch (SqlException error)
+                    {
+                        //TODO handle error properly
+                    }
+                }
+            }
+            return ontime.AddMinutes(offset);
+        }
+        internal static void SetOffTimeValue(string newofftime, string devicename, int offset)
+        {
+            TimeSpan timezoneoffset = TimeSpan.FromMinutes(offset);
+            TimeSpan offtime = TimeSpan.Parse(newofftime).Subtract(timezoneoffset);
+            string deviceuid = getUIDFromDeviceName(devicename);
+
+            using (SqlConnection myConnection = getDatabaseConnection())
+            {
+                using (SqlCommand myCommand = new SqlCommand())
+                {
+                    string cmdString = "UPDATE DeviceSchedules SET ScheduledOffTimeSeconds=@newofftime " +
+                                           "WHERE UID = @deviceuid " +
+                                           "IF @@rowcount = 0 " +
+                                           "BEGIN " +
+                                           "INSERT INTO DeviceSchedules (UID, ScheduledOffTimeSeconds) VALUES(@deviceuid,@newofftime) END";
+                    myCommand.Connection = myConnection;
+                    myCommand.CommandText = cmdString;
+                    myCommand.Parameters.AddWithValue("@deviceuid", deviceuid);
+                    myCommand.Parameters.AddWithValue("@newofftime", offtime.TotalSeconds);
+
+                    try
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    catch (SqlException error)
+                    {
+                        //TODO handle error properly
+                    }
+                }
+            }
+        }
+        internal static void SetOnTimeValue(string newontime, string devicename, int offset)
+        {
+            TimeSpan timezoneoffset = TimeSpan.FromMinutes(offset);
+            TimeSpan ontime = TimeSpan.Parse(newontime).Subtract(timezoneoffset);
+            string deviceuid = getUIDFromDeviceName(devicename);
+
+            using (SqlConnection myConnection = getDatabaseConnection())
+            {
+                using (SqlCommand myCommand = new SqlCommand())
+                {
+                    string cmdString = "UPDATE DeviceSchedules SET ScheduledOnTimeSeconds=@newontime " +
+                                           "WHERE UID = @deviceuid " +
+                                           "IF @@rowcount = 0 " +
+                                           "BEGIN " +
+                                           "INSERT INTO DeviceSchedules (UID, ScheduledOnTimeSeconds) VALUES(@deviceuid,@newontime) END";
+                    myCommand.Connection = myConnection;
+                    myCommand.CommandText = cmdString;
+                    myCommand.Parameters.AddWithValue("@deviceuid", deviceuid);
+                    myCommand.Parameters.AddWithValue("@newontime", ontime.TotalSeconds);
+
+                    try
+                    {
+                        myCommand.ExecuteNonQuery();
+                    }
+                    catch (SqlException error)
+                    {
+                        //TODO handle error properly
+                    }
+                }
+            }
         }
     }
 }
