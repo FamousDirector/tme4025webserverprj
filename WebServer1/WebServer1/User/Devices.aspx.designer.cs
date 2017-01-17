@@ -211,6 +211,24 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.Label CurrentTemperature;
         
         /// <summary>
+        /// ShowTempStatsButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ShowTempStatsButton;
+        
+        /// <summary>
+        /// TempStats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TempStats;
+        
+        /// <summary>
         /// CurrentPowerLabel control.
         /// </summary>
         /// <remarks>
@@ -227,6 +245,24 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label CurrentPower;
+        
+        /// <summary>
+        /// ShowPowerStatsButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ShowPowerStatsButton;
+        
+        /// <summary>
+        /// PowerStats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PowerStats;
         
         /// <summary>
         /// NewDeviceView control.

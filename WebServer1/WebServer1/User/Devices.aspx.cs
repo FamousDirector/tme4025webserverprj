@@ -182,14 +182,14 @@ namespace WebServer1
         {
             if (SetNewScheduleButton.Visible == false)
             {
-                ChangeScheduleButton.CssClass = "btn btn-xs btn-off";
+                ChangeScheduleButton.CssClass = "btn btn-sm btn-off";
                 SetNewScheduleButton.Visible = true;
                 newSchedule.Visible = true;
                 staticSchedule.Visible = false;
             }
             else
             {
-                ChangeScheduleButton.CssClass = "btn btn-xs ";
+                ChangeScheduleButton.CssClass = "btn btn-sm ";
                 SetNewScheduleButton.Visible = false;
                 newSchedule.Visible = false;
                 staticSchedule.Visible = true;
@@ -202,7 +202,7 @@ namespace WebServer1
 
             int timezoneoffset = ExtraCommands.GetTimeZoneOffsetMinutes(Request);
 
-            ChangeScheduleButton.CssClass = "btn btn-xs ";
+            ChangeScheduleButton.CssClass = "btn btn-sm ";
             SetNewScheduleButton.Visible = false;
 
             newSchedule.Visible = false;
@@ -215,6 +215,31 @@ namespace WebServer1
             DatabaseCalls.SetOnTimeValue(ontime, devicename, timezoneoffset);
 
         }
-
+        protected void ShowTempStatsButton_Click(object sender, EventArgs e)
+        {
+            if (TempStats.Visible == false)
+            {
+                ShowTempStatsButton.CssClass = "btn btn-sm btn-off";
+                TempStats.Visible = true;
+            }
+            else
+            {
+                ShowTempStatsButton.CssClass = "btn btn-sm ";
+                TempStats.Visible = false;
+            }
+        }
+        protected void ShowPowerStatsButtonButton_Click(object sender, EventArgs e)
+        {
+            if (PowerStats.Visible == false)
+            {
+                ShowPowerStatsButton.CssClass = "btn btn-sm btn-off";
+                PowerStats.Visible = true;
+            }
+            else
+            {
+                ShowPowerStatsButton.CssClass = "btn btn-sm ";
+                PowerStats.Visible = false;
+            }
+        }
     }
 }

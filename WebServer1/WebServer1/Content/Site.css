@@ -6,7 +6,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway);
 
 @font-face {
-  font-family: 'hybernate'; /*https://icomoon.io/*/
+  font-family: 'hybernate'; /*https://icomoon.io/ */
   src:
     url('fonts/hybernate.ttf') format('truetype'),
     url('fonts/hybernate.woff') format('woff'),
@@ -36,11 +36,13 @@
 
 .hybernate-fonts-main{
   font-family: 'Open Sans Condensed', sans-serif !important;
+  font-weight: bold;
   font-size: 250% !important;
 }
 
 .hybernate-fonts-secondary{
   font-family: 'Raleway', sans-serif !important;
+  font-weight: bold;
   font-size: 125% !important;
 }
 
@@ -76,16 +78,21 @@ input[type="select"] {
 /*Probably a better way but TODO later*/
 h1, h2, h3, h4, h5 h6{
   font-family: 'Open Sans Condensed', sans-serif !important;
-  font-size: 250% !important;
+  font-weight: bold;
+  font-size: 150% !important;
 }
 
 .btn{
     font-family: 'Raleway', sans-serif !important;
+    font-weight: bold;
     font-size: 100% !important;
 }
-
+a{
+    color: #000000;
+}
 span, p{
   font-family: 'Raleway', sans-serif !important;
+  font-weight: bold;
   font-size: 125%;
 }
 
@@ -157,9 +164,9 @@ span, p{
 
 /* Add Vertical Line in nav bar. ref:http://stackoverflow.com/questions/19203816/vertical-divider-doesnt-work-in-bootstrap-3 */
 .navbar .divider-vertical {
-    height: 50px;
+    height: 51px;
     margin: 0 9px;
-    border-right: 1px solid #ffffff;
+    border-right: 2px solid #ffffff;
     border-left: 1px solid #f2f2f2;
 }
 
@@ -174,3 +181,123 @@ span, p{
      }
 }
 
+.navbar-inverse {
+  background-color: #000000;
+  border-color: #ff6a00;
+ border-bottom-width: 2px;
+
+}
+
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+}
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+  color: #ff6a00;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-text {
+  color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #ff6a00;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #000000;
+  background-color:  #ff6a00;
+}
+
+.navbar-inverse .navbar-nav > .disabled > a,
+.navbar-inverse .navbar-nav > .disabled > a:hover,
+.navbar-inverse .navbar-nav > .disabled > a:focus {
+  color: #444444;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: #333333;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #333333;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #101010;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: #080808;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+  border-top-color: #999999;
+  border-bottom-color: #999999;
+}
+
+.navbar-inverse .navbar-nav > .open > a .caret,
+.navbar-inverse .navbar-nav > .open > a:hover .caret,
+.navbar-inverse .navbar-nav > .open > a:focus .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
+    border-color: #080808;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #999999;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffffff;
+    background-color: transparent;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #080808;
+  }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #444444;
+    background-color: transparent;
+  }
+}
+
+.navbar-inverse .navbar-link {
+  color: #999999;
+}
+
+.navbar-inverse .navbar-link:hover {
+  color: #ffffff;
+}

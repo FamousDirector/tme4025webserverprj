@@ -111,6 +111,10 @@ namespace WebServer1
                     ManagerNav.Attributes["class"] = ManagerNav.Attributes["class"] + " active";
                     break;                    
                 default:
+                    if(path.StartsWith("/User/Devices"))
+                    {
+                        DevicesNav.Attributes["class"] = DevicesNav.Attributes["class"] + " active";
+                    }
                     break;
             }
 

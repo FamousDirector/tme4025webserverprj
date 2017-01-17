@@ -4,7 +4,7 @@
     <div class="container"> 
         <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
 
-        <h3>Our Goal</h3>
+        <h3 class="hybernate-fonts-main">Our Goal</h3>
         <hr/>
         <div class="row">
             <div class="col-lg-7">
@@ -19,7 +19,7 @@
                 <img src="" class="img-circle img-responsive"></img>
             </div>
         </div>
-        <h3 class="text-right">Our Promise</h3>
+        <h3 class=" hybernate-fonts-main text-right">Our Promise</h3>
         <hr />
         <div class="row">
             <div class="col-lg-4">
@@ -33,7 +33,7 @@
                 </p>
             </div>
         </div> 
-        <h3>Our Founders</h3>
+        <h3 class="hybernate-fonts-main">Our Founders</h3>
         <hr />
         <div class="row">
             <div class="col-lg-7">
