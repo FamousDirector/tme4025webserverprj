@@ -1,5 +1,5 @@
 ﻿/*Previous Colour Choices
-    Orange: #ff6a00
+    Orange: #C62700
 */
 
 /*Add Fonts*/
@@ -90,11 +90,14 @@ h1, h2, h3, h4, h5 h6{
 a{
     color: #000000;
 }
-span, p{
+ p{
   font-family: 'Raleway', sans-serif !important;
   font-weight: bold;
   font-size: 125%;
 }
+.logo{
+  font-size: 125%;
+ }
 
 .linkeninprofile{
   font-size: 45% !important;
@@ -113,17 +116,17 @@ span, p{
 }
 
 .top-divider{
-    border-top-color:#ff6a00;
+    border-top-color:#C62700;
     border-top-width: 1px;
     border-top-style: solid;
 }
 .bottom-divider{
-    border-bottom-color:#ff6a00 !important;
+    border-bottom-color:#C62700 !important;
     border-bottom-width: 2px !important;
     border-bottom-style: solid !important;
 }
 .coloured-hr{
-    background-color: #ff6a00;
+    background-color: #C62700;
     height: 1px;
 }
 
@@ -132,9 +135,9 @@ span, p{
     background-color: #000000;
 }
 .btn-on{
-  color: #ffffff;
-  background-color: #ff6a00;
-  border-color: #ff6a00;
+  color: #000000;
+  background-color: #C62700;
+  border-color: #C62700;
 }
 .btn-label{
     border-right-color: #000000!important;
@@ -171,7 +174,7 @@ span, p{
 }
 
 .navbar-inverse .divider-vertical {
-    border-right-color: #ff6a00;
+    border-right-color: #C62700;
     border-left-color: #000000;
 }
 
@@ -183,7 +186,7 @@ span, p{
 
 .navbar-inverse {
   background-color: #000000;
-  border-color: #ff6a00;
+  border-color: #C62700;
  border-bottom-width: 2px;
 
 }
@@ -194,7 +197,7 @@ span, p{
 
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #ff6a00;
+  color: #C62700;
   background-color: transparent;
 }
 
@@ -208,7 +211,7 @@ span, p{
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ff6a00;
+  color: #C62700;
   background-color: transparent;
 }
 
@@ -216,7 +219,8 @@ span, p{
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #000000;
-  background-color:  #ff6a00;
+  background-color:  #C62700;
+  padding-bottom:16px; /*This is the one to get rid of that annoying strip at the bottom of the nav bar*/
 }
 
 .navbar-inverse .navbar-nav > .disabled > a,
@@ -227,12 +231,12 @@ span, p{
 }
 
 .navbar-inverse .navbar-toggle {
-  border-color: #333333;
+  border-color: #C62700;
 }
 
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-  background-color: #333333;
+  background-color: #C62700;
 }
 
 .navbar-inverse .navbar-toggle .icon-bar {
@@ -241,7 +245,7 @@ span, p{
 
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #101010;
+  border-color: #C62700;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
@@ -253,19 +257,19 @@ span, p{
 
 .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
   border-top-color: #ffffff;
-  border-bottom-color: #ffffff;
+  border-bottom-color: #C62700;
 }
 
 .navbar-inverse .navbar-nav > .dropdown > a .caret {
   border-top-color: #999999;
-  border-bottom-color: #999999;
+  border-bottom-color: #C62700;
 }
 
 .navbar-inverse .navbar-nav > .open > a .caret,
 .navbar-inverse .navbar-nav > .open > a:hover .caret,
 .navbar-inverse .navbar-nav > .open > a:focus .caret {
   border-top-color: #ffffff;
-  border-bottom-color: #ffffff;
+  border-bottom-color: #C62700;
 }
 
 @media (max-width: 767px) {
