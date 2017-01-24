@@ -15,7 +15,7 @@
         $(document).ready(function () {
             //for input dates
             $('#temp_date').val(new Date().toDateInputValue());
-            $('#power_date').val(new Date().toDateInputValue());
+            $('#Energy_date').val(new Date().toDateInputValue());
 
             $("#btn_temperature_chart").on('click', function () {
                 //clear canvas
@@ -134,12 +134,12 @@
                 }
             });
 
-            $("#btn_power_chart").on('click', function () {
+            $("#btn_Energy_chart").on('click', function () {
                 //clear canvas
-                $('#PowerChart').remove(); // this is my <canvas> element
-                $('#PowerChartHolder').append('<canvas id="PowerChart"><canvas>');
+                $('#EnergyChart').remove(); // this is my <canvas> element
+                $('#EnergyChartHolder').append('<canvas id="EnergyChart"><canvas>');
 
-                var date = $("#power_date").val();
+                var date = $("#Energy_date").val();
                 var devicename = $("#MainContent_DeviceNameLabel").text();
                 var local = new Date();
                 var timzoneoffset = local.getTimezoneOffset();
@@ -151,7 +151,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "../DeviceService.asmx/fillPowerChart",
+                    url: "../DeviceService.asmx/fillEnergyChart",
                     data: jsonData,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -164,20 +164,20 @@
                     var aLabels = aData[0];
                     var aDatasets1 = aData[1];
 
-                    var ctx = $("#PowerChart").get(0).getContext('2d');
+                    var ctx = $("#EnergyChart").get(0).getContext('2d');
                     ctx.canvas.height = 300;  // setting height of canvas
                     ctx.canvas.width = 500; // setting width of canvas
-                    var fillPatternPower = ctx.createLinearGradient(0, 0, 0.5, 175);
-                    fillPatternPower.addColorStop(1, "rgba(193, 193, 193, 0.3)");
-                    fillPatternPower.addColorStop(0.25, "rgba(255, 222, 10,0.5)");
-                    var borderPatternPower = ctx.createLinearGradient(0, 0, 0.5, 175);
-                    borderPatternPower.addColorStop(1, "rgb(193, 193, 193)");
-                    borderPatternPower.addColorStop(0.25, "rgb(255, 222, 10)");
+                    var fillPatternEnergy = ctx.createLinearGradient(0, 0, 0.5, 175);
+                    fillPatternEnergy.addColorStop(1, "rgba(193, 193, 193, 0.3)");
+                    fillPatternEnergy.addColorStop(0.25, "rgba(255, 222, 10,0.5)");
+                    var borderPatternEnergy = ctx.createLinearGradient(0, 0, 0.5, 175);
+                    borderPatternEnergy.addColorStop(1, "rgb(193, 193, 193)");
+                    borderPatternEnergy.addColorStop(0.25, "rgb(255, 222, 10)");
 
                     var data = {
                         labels: aLabels,
                         datasets: [{
-                            label: "Power (W)",
+                            label: "Energy (W)",
                             lineTension: 0.3,
                             backgroundColor: "rgba(255, 106, 0, 0.4)",
                             borderColor: "rgb(255, 106, 0)",
@@ -277,55 +277,47 @@
                     </ul>
                 </div>
             </asp:View>
-            <asp:View ID="DeviceView" runat="server">
+            <asp:View ID="DeviceView" runat="server" >
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4>
                          <asp:Label ID="DeviceNameLabel" CssClass="hybernate-fonts-main" runat="server" Text="Device Name"></asp:Label>
+                         <span class="hybernate-fonts-main">  </span>
                         <asp:Label ID="LastUpdatedTime" CssClass="" runat="server" Text="Panel not refreshed yet."></asp:Label>
                         </h4>
                     </div>
-                    <div class="panel-body row">               
-                        <div class="col-md-2">
+                    <div class="panel-body row container-custom">
+                        <div class="col-4">
                             <asp:UpdatePanel runat="server" ID="DeviceStatePanel">
                                 <ContentTemplate>
                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4>Status</h4>                      
-                                        </div>
-                                        <div class="panel-body top-divider">
-                                            <div class="btn-group">
-                                                <button class="btn btn-lg btn-default btn-label disabled">Power</button>
+                                        <div class="panel-heading" >
+                                            <span class="hybernate-fonts-main inline-blocks ">Power</span>                                                
+                                            <div class="btn-group inline-blocks pull-right">
                                                 <asp:Button ID="OnChangeControllerStateButton" CssClass="btn btn-lg" runat="server" Text="On" OnClick="ChangeControllerStateOn_Click" />
                                                 <asp:Button ID="OffChangeControllerStateButton" CssClass="btn btn-lg" runat="server" Text="Off" OnClick="ChangeControllerStateOff_Click" />        
-                                            </div>
-                                            <br />
-                                            <asp:Label ID="ChangeControllerStateLabel" CssClass="hybernate-fonts-secondary text-muted" Visible="false" runat="server" Text=" DeviceName will turn on/off soon"></asp:Label>
+                                            </div>               
+                                        </div>
+                                        <div id="NewPowerStateHolder" class="panel-body" runat="server" visible ="false" >
+                                            <asp:Label ID="ChangeControllerStateLabel" CssClass="hybernate-fonts-secondary text-muted" runat="server" Text=" DeviceName will turn on/off soon"></asp:Label>
                                         </div>
                                     </div>
-                            </ContentTemplate>
-                            <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID="OnChangeControllerStateButton" />
-                                <asp:AsyncPostBackTrigger ControlID="OnChangeControllerStateButton" />                          
-                        </Triggers>
-                    </asp:UpdatePanel>    
+                                </ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="OnChangeControllerStateButton" />
+                                    <asp:AsyncPostBackTrigger ControlID="OnChangeControllerStateButton" />                          
+                                </Triggers>
+                            </asp:UpdatePanel>    
                         </div>
-                     <div class="row ">
-                        <div class="col-md-3">
+                        <div class="col-4">
                             <asp:UpdatePanel runat="server" ID="NewSchedulePanel">
                                 <ContentTemplate>
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h4>Schedule</h4>
+                                            <h3 class="hybernate-fonts-main inline-blocks ">Schedule</h3>
+                                            <asp:Button ID="ChangeScheduleButton" CssClass="btn btn-sm inline-blocks pull-right" runat="server" Text="Change" OnClick="ChangeScheduleButton_Click" />
                                         </div>
-                                        <div class="panel-body top-divider">
-                                              <div class="row">
-                                                <div class="col-xs-9">
-                                                </div>
-                                                <div class="col-xs-2">
-                                                  <asp:Button ID="ChangeScheduleButton" CssClass="btn btn-sm" runat="server" Text="Change" OnClick="ChangeScheduleButton_Click" />
-                                                </div>
-                                              </div>                                            
+                                        <div class="panel-body">                                           
                                             <div runat="server" id="newSchedule" visible="false" class="row">
                                                 <div class="col-md-5">
                                                     <h5>Set new off time at:</h5>
@@ -363,23 +355,14 @@
                             </Triggers>
                     </asp:UpdatePanel> 
                         </div>
-                        <div class="col-md-3">
+                        <div class="col">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4>Temperature</h4>
+                                    <h3 class="hybernate-fonts-main inline-blocks">Temperature: <asp:Label ID="CurrentTemperature" runat="server" Text="28&#8451;"></asp:Label></h3> 
+                                    <asp:Button ID="ShowTempStatsButton" CssClass="btn btn-sm inline-blocks pull-right" runat="server" Text="More" OnClick="ShowTempStatsButton_Click" />
                                 </div>
-                                <div id="TemperatureChartHolder" class="panel-body top-divider"">
-                                    <div class="row">
-                                        <div class="col-xs-9">
-                                            <asp:Label ID="CurrentTemperatureLabel" CssClass="hybernate-fonts-secondary" runat="server" Text="Current Temperature:"></asp:Label>
-                                            <asp:Label ID="CurrentTemperature" CssClass="hybernate-fonts-secondary" runat="server" Text="28&#8451;"></asp:Label>
-                                        </div>
-                                        <div class="col-xs-2">
-                                            <asp:Button ID="ShowTempStatsButton" CssClass="btn btn-sm " runat="server" Text="More" OnClick="ShowTempStatsButton_Click" />
-                                        </div>
-                                    </div>
-                                    <div id="TempStats" runat="server" visible ="false">
-                                        <hr />
+                                <div id="TemperatureChartHolder" class="panel-body" runat="server" visible ="false">
+                                    <div id="TempStats" >
                                         <div class="input-group input-group-sm">
                                             <span class="input-group-addon glyphicon glyphicon-calendar"></span>
                                             <input class="form-control" id="temp_date" type="date"/>
@@ -389,41 +372,29 @@
                                         </canvas>
                                     </div>
                                 </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4>Power</h4>
+                                    <h3 class="hybernate-fonts-main inline-blocks">Energy: <asp:Label ID="CurrentEnergy" runat="server" Text="9001 W"></asp:Label></h3> 
+                                    <asp:Button ID="ShowEnergyStatsButton" CssClass="btn btn-sm inline-blocks pull-right" runat="server" Text="More" OnClick="ShowEnergyStatsButtonButton_Click" />
                                 </div>
-                                <div id="PowerChartHolder" class="panel-body top-divider">
-                                    <div class="row">
-                                        <div class="col-xs-9">
-                                            <asp:Label ID="CurrentPowerLabel" CssClass="hybernate-fonts-secondary" runat="server" Text="Current Power Usage:"></asp:Label>
-                                            <asp:Label ID="CurrentPower" CssClass="hybernate-fonts-secondary" runat="server" Text="9001 W"></asp:Label>
-                                        </div>
-                                        <div class="col-xs-2">
-                                            <asp:Button ID="ShowPowerStatsButton" CssClass="btn btn-sm" runat="server" Text="More" OnClick="ShowPowerStatsButtonButton_Click" />
-                                        </div>
-                                    </div>
-                                    <div id="PowerStats" runat="server" visible="false">
-                                        <hr />
+                                <div id="EnergyChartHolder" runat="server"  visible="false" class="panel-body">                                    
+                                    <div id="EnergyStats" >
                                         <div class="input-group input-group-sm">
                                             <span class="input-group-addon glyphicon glyphicon-calendar"></span>
-                                            <input class="form-control" id="power_date" type="date"/>
-                                            <input id="btn_power_chart" type="button" class="form-control" value="Show Graph" />
+                                            <input class="form-control" id="Energy_date" type="date"/>
+                                            <input id="btn_Energy_chart" type="button" class="form-control" value="Show Graph" />
                                         </div>
-                                        <canvas id="PowerChart" width="0" height="0"> 
+                                        <canvas id="EnergyChart" width="0" height="0"> 
                                         </canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br />
                 </div>
-            </div>
-
             </asp:View>
             <asp:View ID="NewDeviceView" runat="server">
                 <div class="container">

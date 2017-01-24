@@ -103,6 +103,15 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.Button OffChangeControllerStateButton;
         
         /// <summary>
+        /// NewPowerStateHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NewPowerStateHolder;
+        
+        /// <summary>
         /// ChangeControllerStateLabel control.
         /// </summary>
         /// <remarks>
@@ -193,15 +202,6 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.Button SetNewScheduleButton;
         
         /// <summary>
-        /// CurrentTemperatureLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrentTemperatureLabel;
-        
-        /// <summary>
         /// CurrentTemperature control.
         /// </summary>
         /// <remarks>
@@ -220,49 +220,40 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.Button ShowTempStatsButton;
         
         /// <summary>
-        /// TempStats control.
+        /// TemperatureChartHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TempStats;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TemperatureChartHolder;
         
         /// <summary>
-        /// CurrentPowerLabel control.
+        /// CurrentEnergy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrentPowerLabel;
+        protected global::System.Web.UI.WebControls.Label CurrentEnergy;
         
         /// <summary>
-        /// CurrentPower control.
+        /// ShowEnergyStatsButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrentPower;
+        protected global::System.Web.UI.WebControls.Button ShowEnergyStatsButton;
         
         /// <summary>
-        /// ShowPowerStatsButton control.
+        /// EnergyChartHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ShowPowerStatsButton;
-        
-        /// <summary>
-        /// PowerStats control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PowerStats;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EnergyChartHolder;
         
         /// <summary>
         /// NewDeviceView control.

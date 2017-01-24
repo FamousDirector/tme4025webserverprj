@@ -62,7 +62,7 @@ namespace WebServer1.User
         }
 
         [WebMethod]
-        public List<object> fillPowerChart(string date, string devicename, string timzoneoffset)
+        public List<object> fillEnergyChart(string date, string devicename, string timzoneoffset)
         {
             int offset = 0;
             try

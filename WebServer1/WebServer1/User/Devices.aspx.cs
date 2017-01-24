@@ -13,24 +13,26 @@ namespace WebServer1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //determine route
-            string path = HttpContext.Current.Request.Url.AbsolutePath;
-            string route = path.Remove(0, path.LastIndexOf('/') + 1);
-
-            switch (route) //show view based on route
+            if (!IsPostBack)
             {
-                case "Devices":
-                    MainMultiView.ActiveViewIndex = 0;
-                    break;
-                case "Add":
-                    MainMultiView.ActiveViewIndex = 2;
-                    break;
-                default:
-                    MainMultiView.ActiveViewIndex = 1;
-                    UpdateDeviceView(sender, e);
-                    break;
-            }
+                //determine route
+                string path = HttpContext.Current.Request.Url.AbsolutePath;
+                string route = path.Remove(0, path.LastIndexOf('/') + 1);
 
+                switch (route) //show view based on route
+                {
+                    case "Devices":
+                        MainMultiView.ActiveViewIndex = 0;
+                        break;
+                    case "Add":
+                        MainMultiView.ActiveViewIndex = 2;
+                        break;
+                    default:
+                        MainMultiView.ActiveViewIndex = 1;
+                        UpdateDeviceView(sender, e);
+                        break;
+                }
+            }
         }
         protected void AddNewDeviceViewButton_Click(object sender, EventArgs e)
         {
@@ -131,7 +133,7 @@ namespace WebServer1
             newontime.Text = ontime.ToString("HH:mm");      
 
             //Power
-            CurrentPower.Text = DatabaseCalls.GetNewestPowerValue(devicename).ToString() + " W";
+            CurrentEnergy.Text = DatabaseCalls.GetNewestPowerValue(devicename).ToString() + " W";
 
             //Temperature
             CurrentTemperature.Text = DatabaseCalls.GetNewestTemperatureValue(devicename).ToString() + " °C";
@@ -148,12 +150,12 @@ namespace WebServer1
             OffChangeControllerStateButton.CssClass = "btn btn-lg";
             if (DatabaseCalls.GetNewestDeviceState(devicename) == "ON")
             {
-                ChangeControllerStateLabel.Visible = false;
+                NewPowerStateHolder.Visible = false;
                 DatabaseCalls.SetNewestDeviceState(devicename, 1);
             }
             else
             {
-                ChangeControllerStateLabel.Visible = true;
+                NewPowerStateHolder.Visible = true;
                 ChangeControllerStateLabel.Text = devicename + " will turn on after its next connection.";
                 DatabaseCalls.SetNewestDeviceState(devicename, 1);
             }
@@ -168,12 +170,12 @@ namespace WebServer1
 
             if (DatabaseCalls.GetNewestDeviceState(devicename) == "OFF")
             {
-                ChangeControllerStateLabel.Visible = false;
+                NewPowerStateHolder.Visible = false;
                 DatabaseCalls.SetNewestDeviceState(devicename, 0);
             }
             else
             {
-                ChangeControllerStateLabel.Visible = true;
+                NewPowerStateHolder.Visible = true;
                 ChangeControllerStateLabel.Text = devicename + " will turn off after its next connection.";
                 DatabaseCalls.SetNewestDeviceState(devicename, 0);
             }
@@ -182,14 +184,14 @@ namespace WebServer1
         {
             if (SetNewScheduleButton.Visible == false)
             {
-                ChangeScheduleButton.CssClass = "btn btn-sm btn-off";
+                ChangeScheduleButton.CssClass = "btn btn-sm btn-off inline-blocks pull-right";
                 SetNewScheduleButton.Visible = true;
                 newSchedule.Visible = true;
                 staticSchedule.Visible = false;
             }
             else
             {
-                ChangeScheduleButton.CssClass = "btn btn-sm ";
+                ChangeScheduleButton.CssClass = "btn btn-sm inline-blocks pull-right";
                 SetNewScheduleButton.Visible = false;
                 newSchedule.Visible = false;
                 staticSchedule.Visible = true;
@@ -202,7 +204,7 @@ namespace WebServer1
 
             int timezoneoffset = ExtraCommands.GetTimeZoneOffsetMinutes(Request);
 
-            ChangeScheduleButton.CssClass = "btn btn-sm ";
+            ChangeScheduleButton.CssClass = "btn btn-sm inline-blocks pull-right";
             SetNewScheduleButton.Visible = false;
 
             newSchedule.Visible = false;
@@ -217,28 +219,28 @@ namespace WebServer1
         }
         protected void ShowTempStatsButton_Click(object sender, EventArgs e)
         {
-            if (TempStats.Visible == false)
+            if (TemperatureChartHolder.Visible == false)
             {
-                ShowTempStatsButton.CssClass = "btn btn-sm btn-off";
-                TempStats.Visible = true;
+                ShowTempStatsButton.CssClass = "btn btn-sm btn-off inline-blocks pull-right";
+                TemperatureChartHolder.Visible = true;
             }
             else
             {
-                ShowTempStatsButton.CssClass = "btn btn-sm ";
-                TempStats.Visible = false;
+                ShowTempStatsButton.CssClass = "btn btn-sm inline-blocks pull-right";
+                TemperatureChartHolder.Visible = false;
             }
         }
-        protected void ShowPowerStatsButtonButton_Click(object sender, EventArgs e)
+        protected void ShowEnergyStatsButtonButton_Click(object sender, EventArgs e)
         {
-            if (PowerStats.Visible == false)
+            if (EnergyChartHolder.Visible == false)
             {
-                ShowPowerStatsButton.CssClass = "btn btn-sm btn-off";
-                PowerStats.Visible = true;
+                ShowEnergyStatsButton.CssClass = "btn btn-sm btn-off inline-blocks pull-right";
+                EnergyChartHolder.Visible = true;
             }
             else
             {
-                ShowPowerStatsButton.CssClass = "btn btn-sm ";
-                PowerStats.Visible = false;
+                ShowEnergyStatsButton.CssClass = "btn btn-sm inline-blocks pull-right";
+                EnergyChartHolder.Visible = false;
             }
         }
     }
