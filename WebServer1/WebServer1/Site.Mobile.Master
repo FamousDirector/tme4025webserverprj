@@ -2,22 +2,117 @@
 <%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html lang="en">
 <head runat="server">
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Hybernate</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/images/logo.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet" type='text/css'>
+    <script>
+    function checkClientTimeZone()
+    {
+        // Set the client time zone
+        var dt = new Date();
+        SetCookieCrumb("ClientDateTime", dt.toString());
+
+        var tz = -dt.getTimezoneOffset();
+        SetCookieCrumb("ClientTimeZone", tz.toString());
+
+        // Expire in one year
+        dt.setYear(dt.getYear() + 1);
+        SetCookieCrumb("expires", dt.toUTCString());
+    }
+
+    // Attach to the document onload event
+    checkClientTimeZone();
+    </script>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        <h1>Mobile Master Page</h1>
-        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
-        <section class="content-wrapper main-content clear-fix">
-            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
-        </section>
-        <friendlyUrls:ViewSwitcher runat="server" />
-    </div>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="chart" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand hybernate-fonts-main" runat="server" href="~/"><span class="icon-hybernate_icon logo"></span> HYBERNATE</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">                        
+                        <li class="navbar-inverse divider-vertical"></li>
+                        <li id="AboutNav" runat="server" class="navbar-align hybernate-fonts-main"><a runat="server" href="/About">About Us</a></li>
+                        <li id="ProductsNav" runat="server"  class="hybernate-fonts-main"><a runat="server" href="/Products">Products</a></li>
+                        <li id="DevicesNav" class="dropdown hybernate-fonts-main" runat="server"><a runat="server" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Devices</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/User/Devices">&#9776; Device List</a></li>
+                                <li><a href="/User/Devices/Add">&#10010; Add Device</a></li>
+                                <li role="separator" class="divider"></li>
+                                <asp:ListView ID="DeviceList" runat="server" DataSourceID="ListOfUserDevices">
+                                    <LayoutTemplate>
+                                        <asp:PlaceHolder ID="itemPlaceholder" runat="server" />                                   
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <li><a href="/User/Devices/<%# Eval("DeviceName") %>">&#9900; <%# Eval("DeviceName") %></a></li>
+                                    </ItemTemplate>
+                                </asp:ListView>
+                                <asp:SqlDataSource ID="ListOfUserDevices" runat="server" ConnectionString="<%$ ConnectionStrings:HybernateDatabaseConnectionString %>" SelectCommand="SELECT [DeviceName] FROM [UserDevices] WHERE ([UserName] = @UserName)">
+                                    <SelectParameters>
+                                        <asp:SessionParameter Name="UserName" SessionField="username" Type="String" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource> 
+                            </ul>
+                        </li>                            
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="RegisterNav" class="hybernate-fonts-secondary" runat="server"><a runat="server" href="~/Account/Register">&#10010; Register</a></li>
+                        <li  id="LoginNav" runat="server" class="hybernate-fonts-secondary"><a runat="server"  href="~/Account/Login">&searr; Log In</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="ManagerNav" runat="server" class="hybernate-fonts-secondary"><a runat="server" href="~/Account/Manage" title="Manage your account"> &#9787; <%: Context.User.Identity.GetUserName()  %></a></li>
+                        <li id="LogoutNav" runat="server" class="hybernate-fonts-secondary"><asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log Out &nearr;" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" /></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-custom">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="panel-footer top-divider clearfix">
+            <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate</p>
+            <p class="text-muted">We use our cookies in good faith to improve the user experience. Please keep them enabled.</p>
+        </div>
     </form>
 </body>
 </html>

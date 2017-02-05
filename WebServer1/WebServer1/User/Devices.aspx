@@ -20,7 +20,7 @@
             $("#btn_temperature_chart").on('click', function () {
                 //clear canvas
                 $('#TemperatureChart').remove(); // this is my <canvas> element
-                $('#TemperatureChartHolder').append('<canvas id="TemperatureChart"><canvas>');
+                $('#TempStats').append('<canvas id="TemperatureChart"><canvas>');
 
                 //get vars
                 var date = $("#temp_date").val();
@@ -137,7 +137,7 @@
             $("#btn_Energy_chart").on('click', function () {
                 //clear canvas
                 $('#EnergyChart').remove(); // this is my <canvas> element
-                $('#EnergyChartHolder').append('<canvas id="EnergyChart"><canvas>');
+                $('#EnergyStats').append('<canvas id="EnergyChart"><canvas>');
 
                 var date = $("#Energy_date").val();
                 var devicename = $("#MainContent_DeviceNameLabel").text();
@@ -368,7 +368,7 @@
                                             <input class="form-control" id="temp_date" type="date"/>
                                             <input id="btn_temperature_chart" type="button" class="form-control" value="Show Graph" />
                                         </div>
-                                        <canvas id="TemperatureChart" width="0" height="0"> 
+                                        <canvas id="TemperatureChart" width="10" height="10"> 
                                         </canvas>
                                     </div>
                                 </div>
@@ -387,7 +387,7 @@
                                             <input class="form-control" id="Energy_date" type="date"/>
                                             <input id="btn_Energy_chart" type="button" class="form-control" value="Show Graph" />
                                         </div>
-                                        <canvas id="EnergyChart" width="0" height="0"> 
+                                        <canvas id="EnergyChart" width="10" height="10"> 
                                         </canvas>
                                     </div>
                                 </div>
