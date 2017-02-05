@@ -130,6 +130,15 @@ namespace WebServer1 {
         protected global::System.Web.UI.UpdatePanel NewSchedulePanel;
         
         /// <summary>
+        /// NextTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NextTime;
+        
+        /// <summary>
         /// ChangeScheduleButton control.
         /// </summary>
         /// <remarks>
@@ -164,33 +173,6 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox newontime;
-        
-        /// <summary>
-        /// staticSchedule control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl staticSchedule;
-        
-        /// <summary>
-        /// OffTime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label OffTime;
-        
-        /// <summary>
-        /// OnTime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label OnTime;
         
         /// <summary>
         /// SetNewScheduleButton control.

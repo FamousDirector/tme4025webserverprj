@@ -124,10 +124,15 @@ namespace WebServer1
             DateTime offtime = DatabaseCalls.GetOffTimeValue(devicename, timezoneoffset);
             DateTime ontime = DatabaseCalls.GetOnTimeValue(devicename, timezoneoffset);
 
-            OffTime.Text = offtime.ToShortTimeString();
-            OnTime.Text = ontime.ToShortTimeString();
-
-            
+            if ((offtime.TimeOfDay - DateTime.Now.TimeOfDay)> (ontime.TimeOfDay - DateTime.Now.TimeOfDay))  //determine which time is closer
+            {
+                NextTime.Text = "- Off at: " + offtime.ToShortTimeString();
+            }
+            else 
+            {
+                NextTime.Text = "- On at: " + ontime.ToShortTimeString();
+            }
+                       
 
             newofftime.Text = offtime.ToString("HH:mm");
             newontime.Text = ontime.ToString("HH:mm");      
@@ -187,14 +192,12 @@ namespace WebServer1
                 ChangeScheduleButton.CssClass = "btn btn-sm btn-off inline-blocks pull-right";
                 SetNewScheduleButton.Visible = true;
                 newSchedule.Visible = true;
-                staticSchedule.Visible = false;
             }
             else
             {
                 ChangeScheduleButton.CssClass = "btn btn-sm inline-blocks pull-right";
                 SetNewScheduleButton.Visible = false;
                 newSchedule.Visible = false;
-                staticSchedule.Visible = true;
             }
         }
         protected void SetNewScheduleButton_Click(object sender, EventArgs e)
@@ -208,7 +211,6 @@ namespace WebServer1
             SetNewScheduleButton.Visible = false;
 
             newSchedule.Visible = false;
-            staticSchedule.Visible = true;
 
             string offtime = Request.Form[newofftime.UniqueID];
             string ontime = Request.Form[newontime.UniqueID];

@@ -11,7 +11,7 @@
             return local.toJSON().slice(0, 10);
         });
 
-        //btn for tmp chart
+        //jquery stuff
         $(document).ready(function () {
             //for input dates
             $('#temp_date').val(new Date().toDateInputValue());
@@ -314,11 +314,11 @@
                                 <ContentTemplate>
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h3 class="hybernate-fonts-main inline-blocks ">Schedule</h3>
+                                            <h3 class="hybernate-fonts-main inline-blocks ">Schedule <asp:Label ID="NextTime" runat="server" Text="No Next Time"></asp:Label></h3>
                                             <asp:Button ID="ChangeScheduleButton" CssClass="btn btn-sm inline-blocks pull-right" runat="server" Text="Change" OnClick="ChangeScheduleButton_Click" />
                                         </div>
-                                        <div class="panel-body">                                           
-                                            <div runat="server" id="newSchedule" visible="false" class="row">
+                                        <div class="panel-body" runat="server" id="newSchedule" visible="false">                                           
+                                            <div  class="row">
                                                 <div class="col-md-5">
                                                     <h5>Set new off time at:</h5>
                                                     <asp:TextBox ID="newofftime" CssClass="form-control" runat="server" type="time"></asp:TextBox>
@@ -330,22 +330,7 @@
                                                     <h5>Set new on time at:</h5>
                                                     <asp:TextBox ID="newontime" CssClass="form-control" runat="server" type="time"></asp:TextBox>
                                                 </div>
-                                            </div>
-                                            <div runat="server" id="staticSchedule" class="row">
-                                                <div class="col-md-4">
-                                                    <h5>OFF</h5>
-                                                    <asp:Label ID="OffTime" CssClass="hybernate-fonts-main" runat="server" Text="OffTime"></asp:Label>
-                                                </div>                                        
-                                                <div class="col-md-2">
-                                                    <br />
-                                                    <span class="hybernate-fonts-main">&#8594; </span>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <h5>ON</h5>
-                                                    <asp:Label ID="OnTime" CssClass="hybernate-fonts-main" runat="server" Text="OnTime"></asp:Label>
-                                                </div>
-                                            </div>
-                                            <br />
+                                            </div>  
                                             <asp:Button ID="SetNewScheduleButton" Visible="false" CssClass="btn btn-on" runat="server" Text="Set" OnClick="SetNewScheduleButton_Click" />
                                         </div>
                                     </div>
