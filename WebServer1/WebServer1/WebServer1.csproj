@@ -315,6 +315,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\hybernate.ttf" />
     <Content Include="Content\fonts\hybernate.woff" />
+    <Content Include="Web.config" />
     <None Include="Properties\PublishProfiles\webdeploypackage.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Products.aspx" />
@@ -352,19 +353,18 @@
     <Content Include="Site.Master" />
     <Content Include="User\DeviceService.asmx" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Site.Mobile.Master" />
     <Content Include="User\Web.config" />
+    <Content Include="APIKeys.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="APIKeys.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
