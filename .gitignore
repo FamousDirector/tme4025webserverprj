@@ -306,3 +306,4 @@ $RECYCLE.BIN/
 *.lnk
 WebServer1/WebServer1/Private.config
 Web.config
+*.config
