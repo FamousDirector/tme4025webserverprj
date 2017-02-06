@@ -307,3 +307,4 @@ $RECYCLE.BIN/
 WebServer1/WebServer1/Private.config
 Web.config
 *.config
+WebServer1/WebServer1/Web.Release.config
