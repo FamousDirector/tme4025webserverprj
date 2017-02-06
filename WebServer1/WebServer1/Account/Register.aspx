@@ -38,6 +38,16 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                <asp:Label ID="CaptchaLabel" runat="server" AssociatedControlID="CaptchaCode">
+                 Retype the characters from the picture:
+                </asp:Label>
+                <BotDetect:WebFormsCaptcha ID="CaptchaCode" runat="server" />
+                <asp:TextBox ID="CaptchaCodeTextBox" runat="server" />
+                <asp:Label ID="CaptchaErrorLabel" CssClass="text-danger" runat="server"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
             </div>
         </div>

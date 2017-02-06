@@ -27,7 +27,7 @@
             </div>
             <div class="col-lg-7">
                 <p> 
-                At Hybernate we put the consumer first by creating controlers you can interface with; 
+                At Hybernate we put the consumer first by creating controllers you can interface with; 
                 giving you the possibilities the original designers intended, but never implimented. 
                 With these controllers you can can optimize power consumption, save money on your power bills, and improve safety of your devices. 
                 </p>
