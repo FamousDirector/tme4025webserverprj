@@ -104,41 +104,56 @@ namespace WebServer1
 
             //TODO Validate if data exists
 
-            //Last Update Time
-            DateTime lastupdatetimeutc = DatabaseCalls.GetNewestConnectionDate(devicename);
-            LastUpdatedTime.Text = "Last connected at " + lastupdatetimeutc.AddMinutes(timezoneoffset).ToShortTimeString() + " on " + lastupdatetimeutc.AddMinutes(timezoneoffset).ToShortDateString();
-
-            //State
-            if (!Page.IsPostBack)
+            try
             {
-                if (DatabaseCalls.GetNewestDeviceState(devicename) == "ON")
+
+                //Last Update Time
+                DateTime lastupdatetimeutc = DatabaseCalls.GetNewestConnectionDate(devicename);
+                LastUpdatedTime.Text = "Last connected at " + lastupdatetimeutc.AddMinutes(timezoneoffset).ToShortTimeString() + " on " + lastupdatetimeutc.AddMinutes(timezoneoffset).ToShortDateString();
+
+                //State
+                if (!Page.IsPostBack)
                 {
-                    OnChangeControllerStateButton.CssClass = "btn btn-lg btn-on";
-                    OffChangeControllerStateButton.CssClass = "btn btn-lg";
+                    if (DatabaseCalls.GetNewestDeviceState(devicename) == "ON")
+                    {
+                        OnChangeControllerStateButton.CssClass = "btn btn-lg btn-on";
+                        OffChangeControllerStateButton.CssClass = "btn btn-lg";
+                    }
+                    else
+                    {
+                        OnChangeControllerStateButton.CssClass = "btn btn-lg";
+                        OffChangeControllerStateButton.CssClass = "btn btn-lg btn-off";
+                    }
                 }
-                else
+
+                //Times
+                try
                 {
-                    OnChangeControllerStateButton.CssClass = "btn btn-lg";
-                    OffChangeControllerStateButton.CssClass = "btn btn-lg btn-off";
+                    DateTime offtime = DatabaseCalls.GetOffTimeValue(devicename, timezoneoffset);
+                    DateTime ontime = DatabaseCalls.GetOnTimeValue(devicename, timezoneoffset);
+
+                    NextTime.Text = "Off from: " + offtime.ToShortTimeString() + " - " + ontime.ToShortTimeString();
+
+                    newofftime.Text = offtime.ToString("HH:mm");
+                    newontime.Text = ontime.ToString("HH:mm");
                 }
+                catch
+                {
+                    NextTime.Text = "- None";
+                }
+
+
+                //Power
+                CurrentEnergy.Text = DatabaseCalls.GetNewestPowerValue(devicename).ToString() + " W";
+
+                //Temperature
+                CurrentTemperature.Text = DatabaseCalls.GetNewestTemperatureValue(devicename).ToString() + " °C";
             }
-
-            //Times
-            DateTime offtime = DatabaseCalls.GetOffTimeValue(devicename, timezoneoffset);
-            DateTime ontime = DatabaseCalls.GetOnTimeValue(devicename, timezoneoffset);
-
-            NextTime.Text = "Off from: " + offtime.ToShortTimeString() + " - " + ontime.ToShortTimeString();
-
-            newofftime.Text = offtime.ToString("HH:mm");
-            newontime.Text = ontime.ToString("HH:mm");      
-
-            //Power
-            CurrentEnergy.Text = DatabaseCalls.GetNewestPowerValue(devicename).ToString() + " W";
-
-            //Temperature
-            CurrentTemperature.Text = DatabaseCalls.GetNewestTemperatureValue(devicename).ToString() + " °C";
-
-
+            catch
+            {
+                LastUpdatedTime.CssClass = "alert alert-warning";
+                LastUpdatedTime.Text = "This device with UID: " + DatabaseCalls.GetUIDFromDeviceName(devicename) + " has not connected to our servers yet";
+            }
         }
 
         protected void ChangeControllerStateOn_Click(object sender, EventArgs e)

@@ -83,7 +83,7 @@ namespace WebServer1
         internal static DataSet GetPowerDataForChart(string devicename, string name, string date)
         {
             //TODO Add other variables to get more useable data
-            string UID = getUIDFromDeviceName(devicename);
+            string UID = GetUIDFromDeviceName(devicename);
             DateTime daterangelower = new DateTime();
             try
             {
@@ -127,7 +127,7 @@ namespace WebServer1
         internal static DataSet GetTemperatureDataForChart(string devicename, string name, string date)
         {
             //TODO Add other variables to get more useable data
-            string UID = getUIDFromDeviceName(devicename);
+            string UID = GetUIDFromDeviceName(devicename);
             DateTime daterangelower = new DateTime();
             try
             {
@@ -169,7 +169,7 @@ namespace WebServer1
             return ds;
         }
 
-        private static string getUIDFromDeviceName(string devicename)
+        public static string GetUIDFromDeviceName(string devicename)
         {
             string deviceuid = "";
             using (SqlConnection myConnection = getDatabaseConnection())
@@ -203,7 +203,7 @@ namespace WebServer1
         internal static DateTime GetNewestConnectionDate(string devicename)
         {
             DateTime maxdate = new DateTime();
-            string deviceuid = getUIDFromDeviceName(devicename);
+            string deviceuid = GetUIDFromDeviceName(devicename);
             using (SqlConnection myConnection = getDatabaseConnection())
             {
                 using (SqlCommand myCommand = new SqlCommand())
@@ -231,7 +231,7 @@ namespace WebServer1
             int st = 0;
 
             DateTime date = GetNewestConnectionDate(devicename);
-            string deviceuid = getUIDFromDeviceName(devicename);
+            string deviceuid = GetUIDFromDeviceName(devicename);
             
             using (SqlConnection myConnection = getDatabaseConnection())
             {
@@ -265,7 +265,7 @@ namespace WebServer1
         }
         internal static void SetNewestDeviceState(string devicename, int newstate)
         {           
-            string deviceuid = getUIDFromDeviceName(devicename);
+            string deviceuid = GetUIDFromDeviceName(devicename);
 
             using (SqlConnection myConnection = getDatabaseConnection())
             {
@@ -297,7 +297,7 @@ namespace WebServer1
             int power = 0;
 
             DateTime date = GetNewestConnectionDate(devicename);
-            string deviceuid = getUIDFromDeviceName(devicename);
+            string deviceuid = GetUIDFromDeviceName(devicename);
 
             using (SqlConnection myConnection = getDatabaseConnection())
             {
@@ -326,7 +326,7 @@ namespace WebServer1
             int temperature = 0;
 
             DateTime date = GetNewestConnectionDate(devicename);
-            string deviceuid = getUIDFromDeviceName(devicename);
+            string deviceuid = GetUIDFromDeviceName(devicename);
 
             using (SqlConnection myConnection = getDatabaseConnection())
             {
@@ -353,7 +353,7 @@ namespace WebServer1
         internal static DateTime GetOffTimeValue(string devicename, int offset)
         {
             DateTime offtime = DateTime.Today;            
-            string deviceuid = getUIDFromDeviceName(devicename);
+            string deviceuid = GetUIDFromDeviceName(devicename);
 
             using (SqlConnection myConnection = getDatabaseConnection())
             {
@@ -378,7 +378,7 @@ namespace WebServer1
         internal static DateTime GetOnTimeValue(string devicename, int offset)
         {
             DateTime ontime = DateTime.Today;
-            string deviceuid = getUIDFromDeviceName(devicename);
+            string deviceuid = GetUIDFromDeviceName(devicename);
 
             using (SqlConnection myConnection = getDatabaseConnection())
             {
@@ -404,7 +404,7 @@ namespace WebServer1
         {
             TimeSpan timezoneoffset = TimeSpan.FromMinutes(offset);
             TimeSpan offtime = TimeSpan.Parse(newofftime).Subtract(timezoneoffset);
-            string deviceuid = getUIDFromDeviceName(devicename);
+            string deviceuid = GetUIDFromDeviceName(devicename);
 
             using (SqlConnection myConnection = getDatabaseConnection())
             {
@@ -435,7 +435,7 @@ namespace WebServer1
         {
             TimeSpan timezoneoffset = TimeSpan.FromMinutes(offset);
             TimeSpan ontime = TimeSpan.Parse(newontime).Subtract(timezoneoffset);
-            string deviceuid = getUIDFromDeviceName(devicename);
+            string deviceuid = GetUIDFromDeviceName(devicename);
 
             using (SqlConnection myConnection = getDatabaseConnection())
             {
