@@ -24,6 +24,10 @@
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                     CssClass="text-danger" ErrorMessage="The password field is required." />
+                <asp:RegularExpressionValidator Display="Dynamic" ID="rev" runat="server" ControlToValidate="Password" CssClass="text-danger" 
+                    ErrorMessage="<br> Password must contain each of the following: <br> - One non-alphnumeric character <br> - One digit ('0' to '9') <br>- One uppercase character ('A' to 'Z') <br>- One lowercase character ('A' to 'Z') <br> - Be at least 6 characters " 
+                    ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,}" />
+                        
             </div>
         </div>
         <div class="form-group">
