@@ -14,7 +14,7 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/images/logo.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Raleway" rel="stylesheet" type='text/css'>
-    <script>
+    <script language="javascript">
     function checkClientTimeZone()
     {
         // Set the client time zone
@@ -25,7 +25,7 @@
         SetCookieCrumb("ClientTimeZone", tz.toString());
 
         // Expire in one year
-        dt.setYear(dt.getYear() + 1);
+        dt.setDay(dt.getDay() + 1);
         SetCookieCrumb("expires", dt.toUTCString());
     }
 
