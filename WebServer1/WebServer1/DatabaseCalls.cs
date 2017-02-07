@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -62,15 +63,9 @@ namespace WebServer1
 
         private static SqlConnection getDatabaseConnection()
         {
-            //store entries in HourlyBilling DB           
-            string databaseName = "HybernateDatabase";
-            string server = "JAMESADCAMERON\\SQLEXPRESS";
 
             //create connectionString 
-            string connectionString = "server =" + server + "; " +
-                                       "Trusted_Connection=sspi;" + //uses the applications users credientials                                      
-                                       "database=" + databaseName + "; " +
-                                       "connection timeout=30";
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
             SqlConnection myConnection = new SqlConnection(connectionString);
             try
