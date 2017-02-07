@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="WebServer1.Account.Register" %>
-
+<%@ Register Assembly="BotDetect" Namespace="BotDetect.Web.UI"   TagPrefix="BotDetect" %>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>
     <p class="text-danger">
@@ -45,7 +45,7 @@
                 <asp:TextBox ID="CaptchaCodeTextBox" runat="server" />
                 <asp:Label ID="CaptchaErrorLabel" CssClass="text-danger" runat="server"/>
             </div>
-        </div>
+        </div> 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
