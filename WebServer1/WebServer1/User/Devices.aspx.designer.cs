@@ -67,24 +67,6 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.Label DeviceNameLabel;
         
         /// <summary>
-        /// LastUpdatedTime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LastUpdatedTime;
-        
-        /// <summary>
-        /// DeviceStatePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel DeviceStatePanel;
-        
-        /// <summary>
         /// OnChangeControllerStateButton control.
         /// </summary>
         /// <remarks>
@@ -119,6 +101,15 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ChangeControllerStateLabel;
+        
+        /// <summary>
+        /// LastUpdatedTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LastUpdatedTime;
         
         /// <summary>
         /// NewSchedulePanel control.
@@ -238,6 +229,15 @@ namespace WebServer1 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl EnergyChartHolder;
         
         /// <summary>
+        /// RemoveDeviceButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RemoveDeviceButton;
+        
+        /// <summary>
         /// NewDeviceView control.
         /// </summary>
         /// <remarks>
@@ -263,6 +263,15 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox NameTextbox;
+        
+        /// <summary>
+        /// rev control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rev;
         
         /// <summary>
         /// AddNewDeviceButton control.

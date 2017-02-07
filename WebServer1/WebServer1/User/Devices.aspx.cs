@@ -85,10 +85,11 @@ namespace WebServer1
             string devicename = path.Remove(0, path.LastIndexOf('/') + 1);
 
             //TODO Check if that Name exists
+            //TODO Validate they are sure
 
             DatabaseCalls.RemoveDeviceFromDatabase(devicename, User.Identity.Name);
 
-            Response.Redirect(Request.RawUrl); //refresh page
+            Response.Redirect(path.Remove(path.LastIndexOf('/'))); //refresh page
 
         }
         protected void UpdateDeviceView(object sender, EventArgs e)
@@ -100,6 +101,8 @@ namespace WebServer1
 
             //timezone offset
             int timezoneoffset = ExtraCommands.GetTimeZoneOffsetMinutes(Request);
+
+            //TODO Validate if data exists
 
             //Last Update Time
             DateTime lastupdatetimeutc = DatabaseCalls.GetNewestConnectionDate(devicename);
@@ -124,15 +127,7 @@ namespace WebServer1
             DateTime offtime = DatabaseCalls.GetOffTimeValue(devicename, timezoneoffset);
             DateTime ontime = DatabaseCalls.GetOnTimeValue(devicename, timezoneoffset);
 
-            if ((offtime.TimeOfDay - DateTime.Now.TimeOfDay)> (ontime.TimeOfDay - DateTime.Now.TimeOfDay))  //determine which time is closer
-            {
-                NextTime.Text = "- Off at: " + offtime.ToShortTimeString();
-            }
-            else 
-            {
-                NextTime.Text = "- On at: " + ontime.ToShortTimeString();
-            }
-                       
+            NextTime.Text = "Off from: " + offtime.ToShortTimeString() + " - " + ontime.ToShortTimeString();
 
             newofftime.Text = offtime.ToString("HH:mm");
             newontime.Text = ontime.ToString("HH:mm");      

@@ -280,35 +280,17 @@
             <asp:View ID="DeviceView" runat="server" >
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4>
-                         <asp:Label ID="DeviceNameLabel" CssClass="hybernate-fonts-main" runat="server" Text="Device Name"></asp:Label>
-                         <span class="hybernate-fonts-main">  </span>
-                        <asp:Label ID="LastUpdatedTime" CssClass="" runat="server" Text="Panel not refreshed yet."></asp:Label>
-                        </h4>
+                         <asp:Label ID="DeviceNameLabel" CssClass="hybernate-fonts-main inline-blocks" runat="server" Text="Device Name"></asp:Label>
+                            <div class="btn-group inline-blocks pull-right">
+                                <asp:Button ID="OnChangeControllerStateButton" CssClass="btn btn-lg" runat="server" Text="On" OnClick="ChangeControllerStateOn_Click" />
+                                <asp:Button ID="OffChangeControllerStateButton" CssClass="btn btn-lg" runat="server" Text="Off" OnClick="ChangeControllerStateOff_Click" />        
+                            </div>                           
                     </div>
                     <div class="panel-body row container-custom">
-                        <div class="col-4">
-                            <asp:UpdatePanel runat="server" ID="DeviceStatePanel">
-                                <ContentTemplate>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading" >
-                                            <span class="hybernate-fonts-main inline-blocks ">Power</span>                                                
-                                            <div class="btn-group inline-blocks pull-right">
-                                                <asp:Button ID="OnChangeControllerStateButton" CssClass="btn btn-lg" runat="server" Text="On" OnClick="ChangeControllerStateOn_Click" />
-                                                <asp:Button ID="OffChangeControllerStateButton" CssClass="btn btn-lg" runat="server" Text="Off" OnClick="ChangeControllerStateOff_Click" />        
-                                            </div>               
-                                        </div>
-                                        <div id="NewPowerStateHolder" class="panel-body" runat="server" visible ="false" >
-                                            <asp:Label ID="ChangeControllerStateLabel" CssClass="hybernate-fonts-secondary text-muted" runat="server" Text=" DeviceName will turn on/off soon"></asp:Label>
-                                        </div>
-                                    </div>
-                                </ContentTemplate>
-                                <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID="OnChangeControllerStateButton" />
-                                    <asp:AsyncPostBackTrigger ControlID="OnChangeControllerStateButton" />                          
-                                </Triggers>
-                            </asp:UpdatePanel>    
-                        </div>
+                    <div id="NewPowerStateHolder" class="panel-body" runat="server" visible ="false" >
+                        <asp:Label ID="ChangeControllerStateLabel" CssClass="hybernate-fonts-secondary text-muted" runat="server" Text=" DeviceName will turn on/off soon"></asp:Label>
+                    </div>
+                    <asp:Label ID="LastUpdatedTime" CssClass="" runat="server" Text="Panel not refreshed yet."></asp:Label>
                         <div class="col-4">
                             <asp:UpdatePanel runat="server" ID="NewSchedulePanel">
                                 <ContentTemplate>
@@ -378,6 +360,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col">                                 
+                            <asp:Button ID="RemoveDeviceButton" CssClass="btn btn-sm inline-blocks pull-right" runat="server" Text="Remove Device" OnClick="RemoveDeviceButton_Click" />
+                        </div>
                     </div>
                 </div>
             </asp:View>
@@ -385,10 +370,14 @@
                 <div class="container">
                     <div class="jumbotron">
                         <h3>Add New Device</h3>
+                        <br />
+                        <asp:ValidationSummary runat="server" CssClass="text-danger" />
                         <h5>Device UID:</h5>
                         <asp:TextBox ID="UIDTextbox" CssClass="form-control" runat="server" OnTextChanged="UIDTextbox_TextChanged"></asp:TextBox>
                         <h5>Device Name:</h5>
                         <asp:TextBox ID="NameTextbox" CssClass="form-control" runat="server" OnTextChanged="NameTextBox_TextChanged"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="rev" runat="server" ControlToValidate="NameTextbox" CssClass="text-danger" ErrorMessage="No Spaces Please!" ValidationExpression="[^\s]+" />
+                        <br />
                         <asp:Button ID="AddNewDeviceButton" CssClass="btn btn-primary btn-xs" runat="server" Text="Add" OnClick="AddNewDeviceButton_Click" />
                     </div>
                 </div>
