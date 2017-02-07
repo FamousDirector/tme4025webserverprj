@@ -13,23 +13,23 @@
                                             HYBERNATE
                                         </h2>
                                         <p>
-                                            Control your Energy
+                                            Control Your Energy
                                         </p>
                                         </asp:View>
                                         <asp:View ID="View2" runat="server">
                                             <h2>
-                                            Our Controller
+                                            OUR CONTROLLER
                                         </h2>
                                         <p>
-                                            We aim to blah...
+                                            We aim to produce a low-cost, simple and effective solution of lowering your electricity usage
                                         </p>
                                         </asp:View>
                                         <asp:View ID="View3" runat="server">
                                             <h2>
-                                            More Stuff!
+                                            We Are HYBERNATE
                                         </h2>
                                         <p>
-                                            We aim to blah...
+                                           We are a team of electrical engineering students and are here to save you money!
                                         </p>
                                         </asp:View>
                                 </asp:MultiView>
@@ -51,17 +51,13 @@
             <div class="col ">
                 <h2>Save Money!</h2>
                 <p>
-                    BLah BLah</p>
+                   Our product will work to operate your water heater outside of your Time Of Use (TOU) hours, saving you money.
+                </p>
             </div>
             <div class="col ">
                 <h2>Set &amp; Forget!</h2>
                 <p>
-                    Blah Blah</p>
-            </div>
-            <div class="col">
-                <h2>Get Paid!</h2>
-                <p>
-                    BLah blah</p>
+                    After it has been set up, the product will control your water heater without any further configuration</p>
             </div>
         </div>
     </div>
