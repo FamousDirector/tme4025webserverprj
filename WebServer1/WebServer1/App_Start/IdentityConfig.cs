@@ -23,7 +23,7 @@ namespace WebServer1
 
         private async Task configEmailasync(IdentityMessage message)
         {
-            string FROM = "jamesadcameron111@gmail.com";   //TODO use a proper address
+            string FROM = "no-reply@hybernate.ca";   //TODO use a proper address
             string TO = message.Destination;  // Replace with a "To" address. If your account is still in the
                                                         // sandbox, this address must be verified.
 
@@ -35,7 +35,7 @@ namespace WebServer1
             string SMTP_PASSWORD = ConfigurationManager.AppSettings["SMTPPassword"];  // Replace with your SMTP password.
 
             // Amazon SES SMTP host name. This example uses the US West (Oregon) region.
-            string HOST = "email-smtp.us-west-2.amazonaws.com";
+            string HOST = "email-smtp.us-east-1.amazonaws.com";
 
             // The port you will connect to on the Amazon SES SMTP endpoint. We are choosing port 587 because we will use
             // STARTTLS to encrypt the connection.
@@ -51,11 +51,15 @@ namespace WebServer1
                 // the client will issue a STARTTLS command to upgrade to an encrypted connection using SSL.
                 client.EnableSsl = true;
 
+                //Create Mail Message
+                MailMessage mailObj = new MailMessage(FROM, TO, SUBJECT, BODY);
+                mailObj.IsBodyHtml = true;
+
                 // Send the email. 
                 try
                 {
                     //Attempting to send an email through the Amazon SES SMTP interface.../
-                    await client.SendMailAsync(FROM, TO, SUBJECT, BODY);
+                    await client.SendMailAsync(mailObj);
                 }
                 catch (Exception ex)
                 {
