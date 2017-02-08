@@ -74,6 +74,7 @@ namespace WebServer1
 
             //TODO Check if that UID exists
             //TODO Check if that Name exists
+            //TODO Check if UID is already taken
 
             DatabaseCalls.AddNewDeviceToDatabase(User.Identity.Name, uid, name);
 
