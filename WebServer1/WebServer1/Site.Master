@@ -108,9 +108,11 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <div class="panel-footer top-divider clearfix">
-            <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate</p>
-            <p class="text-muted">We use our cookies in good faith to improve the user experience. Please keep them enabled.</p>
+        <div class="footer top-divider ">
+            <div class="container-custom">
+                <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate</p>
+                <p class="text-muted">We use our cookies in good faith to improve the user experience. Please keep them enabled.</p>
+            </div>
         </div>
     </form>
 </body>

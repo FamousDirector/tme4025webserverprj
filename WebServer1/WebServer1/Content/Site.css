@@ -59,6 +59,14 @@ body {
     padding-right: 15px;
 }
 
+.footer {
+  position: relative;
+  margin-top: -20px; /* negative value of footer height */
+  height: 20px;
+  clear:both;
+  padding-top:20px;
+} 
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -103,15 +111,16 @@ p{
 .linkeninprofile{
   font-size: 100% !important;
 }
+
+.container-custom{
+    margin-top: 0.5%;
+    margin-left: 2%;
+    margin-right: 2%;  
+}
 @media (min-width: 1000px) {
-    .container-custom{
-        margin-top: 0.5%;
-        margin-left: 2%;
-        margin-right: 2%;  
-    }
     .container {
-        margin-left: 10%;
-        margin-right: 10%;
+        margin-left: 30%;
+        margin-right: 30%;
         margin-top: 1%;
         margin-bottom: 5%;
     }
@@ -122,6 +131,7 @@ p{
     border-top-width: 1px;
     border-top-style: solid;
 }
+
 .bottom-divider{
     border-bottom-color:#E53E25 !important;
     border-bottom-width: 2px !important;
