@@ -51,13 +51,13 @@
             <div class="col ">
                 <h2>Save Money!</h2>
                 <p>
-                   Our product will work to operate your water heater outside of your Time Of Use (TOU) hours, saving you money.
+                   Our product will work to operate your water heater outside of the Time Of Use (TOU) hours set by your electric utility, saving you money.
                 </p>
             </div>
             <div class="col ">
                 <h2>Set &amp; Forget!</h2>
                 <p>
-                    After it has been set up, the product will control your water heater without any further configuration</p>
+                    After our product has been set up, it will control your water heater without any further configuration.</p>
             </div>
         </div>
     </div>

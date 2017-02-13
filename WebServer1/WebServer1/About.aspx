@@ -9,17 +9,17 @@
         <div class="row">
             <div class="col-lg-7">
                 <p>
-                At Hybernate, our goal is to give you the control over your energy by creating environment-friendly smart devices. 
-                As pioneers of industry trailblaze in new fields and create wonderous inventions, 
-                they often leave behind their inventions before they can be properly utilized by the average consumer. 
-                That is where we come in. 
+                At Hybernate, our goal is to give you control over your energy by creating smart devices. 
+                    As pioneers of industry trailblaze in new fields and create wondrous inventions, 
+                    they often leave behind their inventions before they can be properly utilized by the average consumer. 
+                    That is where we come in.
                 </p>
             </div>
             <div class="col-lg-4">
                 <img src="" class="img-circle img-responsive"></img>
             </div>
         </div>
-        <h3 class=" hybernate-fonts-main text-right">Our Promise</h3>
+        <h3 class=" hybernate-fonts-main text-left">Our Promise</h3>
         <hr />
         <div class="row">
             <div class="col-lg-4">
@@ -27,9 +27,9 @@
             </div>
             <div class="col-lg-7">
                 <p> 
-                At Hybernate we put the consumer first by creating controllers you can interface with; 
-                giving you the possibilities the original designers intended, but never implimented. 
-                With these controllers you can can optimize power consumption, save money on your power bills, and improve safety of your devices. 
+                At Hybernate, we put the consumer first by putting power in your hands with our controllers; 
+                    giving you the possibilities the original designers intended, but never implemented. 
+                    With these controllers you can can optimize power consumption, save money on your power bills, and improve safety of your devices. 
                 </p>
             </div>
         </div> 
