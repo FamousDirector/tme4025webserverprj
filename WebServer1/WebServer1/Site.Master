@@ -104,16 +104,15 @@
                 </div>
             </div>
         </div>
-        <div class="container-custom">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-        <div class="footer top-divider ">
+
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+
+        <footer class="footer top-divider ">
             <div class="container-custom">
                 <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate</p>
                 <p class="text-muted">We use our cookies in good faith to improve the user experience. Please keep them enabled.</p>
             </div>
-        </div>
+        </footer>
     </form>
 </body>
 </html>
