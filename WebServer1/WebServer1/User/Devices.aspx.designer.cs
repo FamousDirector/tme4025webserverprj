@@ -58,15 +58,6 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.View DeviceView;
         
         /// <summary>
-        /// DeviceNameLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DeviceNameLabel;
-        
-        /// <summary>
         /// OnChangeControllerStateButton control.
         /// </summary>
         /// <remarks>
@@ -83,6 +74,15 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button OffChangeControllerStateButton;
+        
+        /// <summary>
+        /// DeviceNameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DeviceNameLabel;
         
         /// <summary>
         /// NewPowerStateHolder control.
@@ -121,15 +121,6 @@ namespace WebServer1 {
         protected global::System.Web.UI.UpdatePanel NewSchedulePanel;
         
         /// <summary>
-        /// NextTime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label NextTime;
-        
-        /// <summary>
         /// ChangeScheduleButton control.
         /// </summary>
         /// <remarks>
@@ -137,6 +128,15 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ChangeScheduleButton;
+        
+        /// <summary>
+        /// NextTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NextTime;
         
         /// <summary>
         /// newSchedule control.
@@ -175,15 +175,6 @@ namespace WebServer1 {
         protected global::System.Web.UI.WebControls.Button SetNewScheduleButton;
         
         /// <summary>
-        /// CurrentTemperature control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrentTemperature;
-        
-        /// <summary>
         /// ShowTempStatsButton control.
         /// </summary>
         /// <remarks>
@@ -191,6 +182,15 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ShowTempStatsButton;
+        
+        /// <summary>
+        /// CurrentTemperature control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CurrentTemperature;
         
         /// <summary>
         /// TemperatureChartHolder control.
@@ -202,15 +202,6 @@ namespace WebServer1 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl TemperatureChartHolder;
         
         /// <summary>
-        /// CurrentEnergy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrentEnergy;
-        
-        /// <summary>
         /// ShowEnergyStatsButton control.
         /// </summary>
         /// <remarks>
@@ -218,6 +209,15 @@ namespace WebServer1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ShowEnergyStatsButton;
+        
+        /// <summary>
+        /// CurrentEnergy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CurrentEnergy;
         
         /// <summary>
         /// EnergyChartHolder control.
