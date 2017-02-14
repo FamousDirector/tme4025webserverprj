@@ -62,5 +62,10 @@ namespace WebServer1
             }
             UpdateTimer.Interval = 30000; //make timer longer after press
         }
+
+        protected void StartButtonNow_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Products.aspx", true);
+        }
     }
 }
