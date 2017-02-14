@@ -28,7 +28,7 @@
         dt.setDay(dt.getDay() + 1);
         SetCookieCrumb("expires", dt.toUTCString());
     }
-
+        
     // Attach to the document onload event
     checkClientTimeZone();
 
@@ -115,7 +115,7 @@
 
         <footer class="footer top-divider ">
             <div class="container-custom">
-                <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate</p>
+                <p class="text-muted">&copy; <%: DateTime.Now.Year %> - Hybernate - <u><a class="text-muted" href="Contact.aspx">Contact Us</a></u></p>
                 <p class="text-muted">We use our cookies in good faith to improve the user experience. Please keep them enabled.</p>
             </div>
         </footer>
