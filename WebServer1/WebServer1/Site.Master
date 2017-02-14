@@ -31,6 +31,12 @@
 
     // Attach to the document onload event
     checkClientTimeZone();
+
+
+    $(document).ready(function () {
+        //init tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+    });
     </script>
 </head>
 <body>
