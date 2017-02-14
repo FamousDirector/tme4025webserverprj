@@ -67,5 +67,10 @@ namespace WebServer1
         {
             Server.Transfer("Products.aspx", true);
         }
+
+        protected void TrialButton_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Contact.aspx", true);
+        }
     }
 }

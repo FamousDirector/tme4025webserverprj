@@ -50,7 +50,7 @@
                 <div id="img_container">
                     <h1 class="text-center">Start Today!</h1>
                     <img src="../images/interface-screenshot.png" class="img-thumbnail" max-width:100% alt="interface screenshot">
-                    <asp:Button runat="server" CssClass="btn btn-overlay btn-on" Text="Request A Trial" />
+                    <asp:Button runat="server" ID="TrialButton" CssClass="btn btn-overlay btn-on" Text="Request A Trial" OnClick="TrialButton_Click" />
                 </div>
             </div>
             <div class="col-md-6 col-md-offset-1 jumbotron">

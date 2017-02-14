@@ -7,7 +7,7 @@
         <div class="form-horizontal">
             <asp:ValidationSummary runat="server" CssClass="text-danger" />
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Your Email:</asp:Label>
                 <div class="col-md-10">
                     <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
