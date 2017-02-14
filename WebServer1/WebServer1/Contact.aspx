@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="WebServer1.Contact" %>
+﻿<%@ Page Title="Contact Us" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="WebServer1.Contact" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container jumbotron">
@@ -11,7 +11,15 @@
                 <div class="col-md-10">
                     <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                        CssClass="text-danger" ErrorMessage="The email field is required." />
+                        CssClass="text-danger" Display="Dynamic" ErrorMessage="The email field is required." />
+                </div>
+            </div>
+            <div class="form-group">
+                <asp:Label runat="server" AssociatedControlID="Name" CssClass="col-md-2 control-label">Your Name:</asp:Label>
+                <div class="col-md-10">
+                    <asp:TextBox runat="server" ID="Name" CssClass="form-control" />
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="Name" 
+                        CssClass="text-danger" Display="Dynamic" ErrorMessage="We need to know your name!" />
                 </div>
             </div>
             <div class="form-group">

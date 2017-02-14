@@ -70,7 +70,7 @@ namespace WebServer1
 
         protected void TrialButton_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Contact.aspx", true);
+            Response.RedirectToRoute("ContactRoute", new { subject = "Trial" });
         }
     }
 }

@@ -19,6 +19,12 @@ namespace WebServer1
             "~/User/Devices.aspx", true,
             new RouteValueDictionary {
                 { "device", "^[a-zA-Z0-9]*$" } });
+
+            routes.MapPageRoute("ContactRoute",
+            "Contact/{subject}",
+            "~/Contact.aspx", true,
+            new RouteValueDictionary {
+                { "subject", "^[a-zA-Z0-9]*$" } });
         }
     }
 }
