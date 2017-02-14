@@ -56,7 +56,9 @@
             <div class="col-md-6 col-md-offset-1 jumbotron">
                 <h1 class="text-center">WE ARE</h1>
                 <hr class ="coloured-hr"/>
-                <img src="../images/full-logo.png" class="img-responsive" max-width:100% alt="full-logo">
+                <a href="About">
+                    <img src="../images/full-logo.png" class="img-responsive" max-width:100% alt="full-logo">
+                </a>
             </div>
         </div>
     </div>      
