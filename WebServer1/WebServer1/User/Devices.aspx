@@ -257,16 +257,16 @@
         <br />
         <asp:MultiView ID="MainMultiView" runat="server">
             <asp:View ID="DefaultView" runat="server">
-                <div class="jumbotron">
+                <div class="jumbotron container">
                     <h3>Manage Your Devices</h3>
                     <ul class=" list-group hybernate-fonts-secondary">
-                        <li class="list-group-item bottom-divider"><a href="/User/Devices/Add">&#10010; Add New Device</a></li>
+                        <li class="list-group-item bottom-divider"><a class=" text-black" href="/User/Devices/Add">&#10010; Add New Device</a></li>
                         <asp:ListView ID="DeviceList" runat="server" DataSourceID="ListOfUserDevices">
                             <LayoutTemplate>
                                 <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
                             </LayoutTemplate>
                             <ItemTemplate>
-                                <li class="list-group-item"><a href="/User/Devices/<%# Eval("DeviceName") %>">&#9900; <%# Eval("DeviceName") %></a></li>
+                                <li class="list-group-item"><a class=" text-black" href="/User/Devices/<%# Eval("DeviceName") %>">&#9900; <%# Eval("DeviceName") %></a></li>
                             </ItemTemplate>
                         </asp:ListView>
                         <asp:SqlDataSource ID="ListOfUserDevices" runat="server" ConnectionString="<%$ ConnectionStrings:HybernateDatabaseConnectionString %>" SelectCommand="SELECT [DeviceName] FROM [UserDevices] WHERE ([UserName] = @UserName)">
@@ -374,16 +374,15 @@
             <asp:View ID="NewDeviceView" runat="server">
                 <div class="container">
                     <div class="jumbotron">
-                        <h3>Add New Device</h3>
-                        <br />
-                        <asp:ValidationSummary runat="server" CssClass="text-danger" />
-                        <h5>Device UID:</h5>
-                        <asp:TextBox ID="UIDTextbox" CssClass="form-control" runat="server" OnTextChanged="UIDTextbox_TextChanged"></asp:TextBox>
-                        <h5>Device Name:</h5>
-                        <asp:TextBox ID="NameTextbox" CssClass="form-control" runat="server" OnTextChanged="NameTextBox_TextChanged"></asp:TextBox>
+                        <h1>Add New Device</h1>
+                        <hr class="coloured-hr"/>
+                        <a href="#" class="text-black hybernate-fonts-secondary" data-toggle="tooltip" data-placement="right" title="This is a unique string of 16 letters and numbers. It is located on the second page of your users manual.">Device UID:</a>
+                        <asp:TextBox ID="UIDTextbox" CssClass="form-control" runat="server"></asp:TextBox>
+                        <a href="#" class="text-black hybernate-fonts-secondary" data-toggle="tooltip" data-placement="right" title="This is the name you would like to refer to the device (ie: BasementWaterHeater)">Device Name:</a>
+                        <asp:TextBox ID="NameTextbox" CssClass="form-control" runat="server"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="rev" runat="server" ControlToValidate="NameTextbox" CssClass="text-danger" ErrorMessage="No Spaces Please!" ValidationExpression="[^\s]+" />
                         <br />
-                        <asp:Button ID="AddNewDeviceButton" CssClass="btn btn-primary btn-xs" runat="server" Text="Add" OnClick="AddNewDeviceButton_Click" />
+                        <asp:Button ID="AddNewDeviceButton" CssClass="btn btn-on" runat="server" Text="Add" OnClick="AddNewDeviceButton_Click" />
                     </div>
                 </div>
             </asp:View>
