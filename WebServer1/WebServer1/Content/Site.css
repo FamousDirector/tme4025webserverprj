@@ -61,8 +61,8 @@ body {
 
 .footer {
   position: relative;
-  margin-top: -20px; /* negative value of footer height */
-  height: 20px;
+  margin-top: 50px; /* negative value of footer height */
+  height: 10px;
   clear:both;
   padding-top:20px;
 } 
@@ -95,6 +95,17 @@ h1, h2, h3, h4, h5 h6{
     font-weight: bold;
     font-size: 100% !important;
 }
+#img_container {
+    position:relative;
+}
+
+.btn-overlay {
+    position:absolute;
+    bottom:5%;
+    right:25%;
+    width:170px;
+    height:40px;
+}
 p{
   font-family: 'Droid Sans', sans-serif;
   font-size: 100%;
@@ -119,8 +130,8 @@ p{
 }
 @media (min-width: 1000px) {
     .container {
-        margin-left: 30%;
-        margin-right: 30%;
+        margin-left: 20%;
+        margin-right: 20%;
         margin-top: 1%;
         margin-bottom: 5%;
     }
@@ -142,6 +153,15 @@ p{
     height: 1px;
 }
 
+.jumbotron{
+    border-style:solid;
+    border-width: 1px ;
+    border-color: #E53E25 ;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #ebebeb;
+}
+
 .btn-off{
     color:#ffffff;
     background-color: #000000;
@@ -152,12 +172,14 @@ p{
   border-color: #E53E25;
 }
 .btn-label{
-    border-right-color: #000000!important;
+    border-right-color: #000000 !important;
     border-right-width: 2px !important;
     border-right-style: solid !important;
     color: #000000 !important;
 }
-
+.text-black{
+    color: black;
+}
 .navbar-align{
     padding-top:1px;
 }
