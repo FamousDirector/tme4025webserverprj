@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Hybernate" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebServer1._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container grid">
+    <div class="grid">
         <div class="row jumbotron">
             <div class="col-md-8">
                  <asp:UpdatePanel runat="server" ID="TitlePanel" UpdateMode="Always">

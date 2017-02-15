@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Devices" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="WebServer1.Products" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container jumbotron">
+    <div class="jumbotron">
         <h2>Product Name</h2>
         <hr class="coloured-hr"/>
         <h4><em>"one liner"</em></h4>
