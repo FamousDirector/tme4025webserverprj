@@ -257,7 +257,7 @@
         <br />
         <asp:MultiView ID="MainMultiView" runat="server">
             <asp:View ID="DefaultView" runat="server">
-                <div class="jumbotron container">
+                <div class="jumbotron">
                     <h3>Manage Your Devices</h3>
                     <ul class=" list-group hybernate-fonts-secondary">
                         <li class="list-group-item bottom-divider"><a class=" text-black" href="/User/Devices/Add">&#10010; Add New Device</a></li>
@@ -278,7 +278,7 @@
                 </div>
             </asp:View>
             <asp:View ID="DeviceView" runat="server" >
-                <div class="container">
+                <div class="">
                     <div class="panel panel-default ">
                         <div class="panel-heading">
                                 <div class="btn-group inline-blocks pull-right">
@@ -372,7 +372,7 @@
                 </div>
             </asp:View>
             <asp:View ID="NewDeviceView" runat="server">
-                <div class="container">
+                <div class="">
                     <div class="jumbotron">
                         <h1>Add New Device</h1>
                         <hr class="coloured-hr"/>
