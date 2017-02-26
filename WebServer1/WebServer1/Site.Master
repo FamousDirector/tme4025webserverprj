@@ -130,8 +130,10 @@
             </div>
         </div>
 
-        <div class="container">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        <div class="container-fluid">
+            <div class="container">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </div>            
         </div>
         
 
