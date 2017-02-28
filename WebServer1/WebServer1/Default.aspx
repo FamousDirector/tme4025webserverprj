@@ -49,6 +49,7 @@
             <div class="col-md-5 jumbotron"> 
                 <div id="img_container">
                     <h1 class="text-center">Start Today!</h1>
+                    <hr class ="coloured-hr"/>
                     <img src="../images/interface-screenshot.png" class="img-thumbnail" max-width:100% alt="interface screenshot">
                     <asp:Button runat="server" ID="TrialButton" CssClass="btn btn-overlay btn-on" Text="Request A Trial" OnClick="TrialButton_Click" />
                 </div>
