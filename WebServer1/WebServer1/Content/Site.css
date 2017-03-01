@@ -87,13 +87,12 @@ input[type="select"] {
 h1, h2, h3, h4, h5 h6{
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: bold;
-  font-size: 150% !important;
 }
 
 .btn{
     font-family: 'Droid Sans', sans-serif ;
     font-weight: bold;
-    font-size: 100% !important;
+    font-size: 125% !important;
 }
 #img_container {
     position:relative;
