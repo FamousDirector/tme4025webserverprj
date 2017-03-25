@@ -2,12 +2,12 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron">
-        <h2>Product Name</h2>
+        <h2>Water Heater Controller</h2>
         <hr class="coloured-hr"/>
-        <h4><em>"one liner"</em></h4>
+        <h4><em>"Control Your Energy"</em></h4>
         <h2>How It Works</h2>
         <hr class="coloured-hr"/>
-        <p>Stuff</p>
+        <p>Take back control of your power usage. Ensure that your money is spent how you want it to be!</p>
         <h2>Customer Reviews</h2>
         <hr class="coloured-hr"/>
             <div class="panel panel-default">
@@ -21,13 +21,24 @@
                                             <img src="" class="img-circle img-responsive"></img>
                                         </div>
                                         <div class="col-lg-7">
-                                            <p><em>"Quote"</em></p>
+                                            <p><em>"Its fine :)"</em></p>
                                             <br />
-                                            <h5 class="text-right">- Person Name</h5>
+                                            <h5 class="text-right">- Tom Sisk</h5>
                                         </div>
                                     </div>
                                 </asp:View>
-                                
+                                <asp:View ID="CustomerReview2" runat="server">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <img src="" class="img-circle img-responsive"></img>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <p><em>"Cool!"</em></p>
+                                            <br />
+                                            <h5 class="text-right">- Jake Arsenault</h5>
+                                        </div>
+                                    </div>
+                                </asp:View>
                             </asp:MultiView>
                         </ContentTemplate>
                         <Triggers>
