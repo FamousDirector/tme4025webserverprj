@@ -46,6 +46,19 @@
   font-size: 125% !important;
 }
 
+#preloadedImages
+{
+    width: 0px;
+    height: 0px;
+    display: inline;
+    background-image: url(path/to/image1.png);
+    background-image: url(path/to/image2.png);
+    background-image: url(path/to/image3.png);
+    background-image: url(path/to/image4.png);
+    background-image: url();
+
+}
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
