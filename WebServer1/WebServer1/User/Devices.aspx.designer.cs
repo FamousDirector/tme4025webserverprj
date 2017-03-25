@@ -202,31 +202,31 @@ namespace WebServer1 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl TemperatureChartHolder;
         
         /// <summary>
-        /// ShowEnergyStatsButton control.
+        /// ShowPowerStatsButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ShowEnergyStatsButton;
+        protected global::System.Web.UI.WebControls.Button ShowPowerStatsButton;
         
         /// <summary>
-        /// CurrentEnergy control.
+        /// CurrentPower control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrentEnergy;
+        protected global::System.Web.UI.WebControls.Label CurrentPower;
         
         /// <summary>
-        /// EnergyChartHolder control.
+        /// PowerChartHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EnergyChartHolder;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PowerChartHolder;
         
         /// <summary>
         /// RemoveDeviceButton control.

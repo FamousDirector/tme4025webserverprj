@@ -145,7 +145,7 @@ namespace WebServer1
 
 
                 //Power
-                CurrentEnergy.Text = DatabaseCalls.GetNewestPowerValue(devicename).ToString() + " W";
+                CurrentPower.Text = DatabaseCalls.GetNewestPowerValue(devicename).ToString() + " W";
 
                 //Temperature
                 CurrentTemperature.Text = DatabaseCalls.GetNewestTemperatureValue(devicename).ToString() + " °C";
@@ -243,17 +243,17 @@ namespace WebServer1
                 TemperatureChartHolder.Visible = false;
             }
         }
-        protected void ShowEnergyStatsButtonButton_Click(object sender, EventArgs e)
+        protected void ShowPowerStatsButtonButton_Click(object sender, EventArgs e)
         {
-            if (EnergyChartHolder.Visible == false)
+            if (PowerChartHolder.Visible == false)
             {
-                ShowEnergyStatsButton.CssClass = "btn btn-sm btn-off inline-blocks pull-right";
-                EnergyChartHolder.Visible = true;
+                ShowPowerStatsButton.CssClass = "btn btn-sm btn-off inline-blocks pull-right";
+                PowerChartHolder.Visible = true;
             }
             else
             {
-                ShowEnergyStatsButton.CssClass = "btn btn-sm inline-blocks pull-right";
-                EnergyChartHolder.Visible = false;
+                ShowPowerStatsButton.CssClass = "btn btn-sm inline-blocks pull-right";
+                PowerChartHolder.Visible = false;
             }
         }
     }

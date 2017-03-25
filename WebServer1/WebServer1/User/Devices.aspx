@@ -15,7 +15,7 @@
         $(document).ready(function () {
             //for input dates
             $('#temp_date').val(new Date().toDateInputValue());
-            $('#Energy_date').val(new Date().toDateInputValue());
+            $('#Power_date').val(new Date().toDateInputValue());
 
             $("#btn_temperature_chart").on('click', function () {
                 //clear canvas
@@ -134,12 +134,12 @@
                 }
             });
 
-            $("#btn_Energy_chart").on('click', function () {
+            $("#btn_Power_chart").on('click', function () {
                 //clear canvas
-                $('#EnergyChart').remove(); // this is my <canvas> element
-                $('#EnergyStats').append('<canvas id="EnergyChart"><canvas>');
+                $('#PowerChart').remove(); // this is my <canvas> element
+                $('#PowerStats').append('<canvas id="PowerChart"><canvas>');
 
-                var date = $("#Energy_date").val();
+                var date = $("#Power_date").val();
                 var devicename = $("#MainContent_DeviceNameLabel").text();
                 var local = new Date();
                 var timzoneoffset = local.getTimezoneOffset();
@@ -151,7 +151,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "../DeviceService.asmx/fillEnergyChart",
+                    url: "../DeviceService.asmx/fillPowerChart",
                     data: jsonData,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -164,20 +164,20 @@
                     var aLabels = aData[0];
                     var aDatasets1 = aData[1];
 
-                    var ctx = $("#EnergyChart").get(0).getContext('2d');
+                    var ctx = $("#PowerChart").get(0).getContext('2d');
                     ctx.canvas.height = 300;  // setting height of canvas
                     ctx.canvas.width = 500; // setting width of canvas
-                    var fillPatternEnergy = ctx.createLinearGradient(0, 0, 0.5, 175);
-                    fillPatternEnergy.addColorStop(1, "rgba(193, 193, 193, 0.3)");
-                    fillPatternEnergy.addColorStop(0.25, "rgba(255, 222, 10,0.5)");
-                    var borderPatternEnergy = ctx.createLinearGradient(0, 0, 0.5, 175);
-                    borderPatternEnergy.addColorStop(1, "rgb(193, 193, 193)");
-                    borderPatternEnergy.addColorStop(0.25, "rgb(255, 222, 10)");
+                    var fillPatternPower = ctx.createLinearGradient(0, 0, 0.5, 175);
+                    fillPatternPower.addColorStop(1, "rgba(193, 193, 193, 0.3)");
+                    fillPatternPower.addColorStop(0.25, "rgba(255, 222, 10,0.5)");
+                    var borderPatternPower = ctx.createLinearGradient(0, 0, 0.5, 175);
+                    borderPatternPower.addColorStop(1, "rgb(193, 193, 193)");
+                    borderPatternPower.addColorStop(0.25, "rgb(255, 222, 10)");
 
                     var data = {
                         labels: aLabels,
                         datasets: [{
-                            label: "Energy (W)",
+                            label: "Power (W)",
                             lineTension: 0.3,
                             backgroundColor: "rgba(255, 106, 0, 0.4)",
                             borderColor: "rgb(255, 106, 0)",
@@ -347,17 +347,17 @@
                             <div class="col">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">                                        
-                                        <asp:Button ID="ShowEnergyStatsButton" CssClass="btn btn-sm inline-blocks pull-right" runat="server" Text="More" OnClick="ShowEnergyStatsButtonButton_Click" />
-                                        <h3 class="hybernate-fonts-main inline-blocks">Energy: <asp:Label ID="CurrentEnergy" runat="server" Text="- No Value"></asp:Label></h3> 
+                                        <asp:Button ID="ShowPowerStatsButton" CssClass="btn btn-sm inline-blocks pull-right" runat="server" Text="More" OnClick="ShowPowerStatsButtonButton_Click" />
+                                        <h3 class="hybernate-fonts-main inline-blocks">Power: <asp:Label ID="CurrentPower" runat="server" Text="- No Value"></asp:Label></h3> 
                                     </div>
-                                    <div id="EnergyChartHolder" runat="server"  visible="false" class="panel-body">                                    
-                                        <div id="EnergyStats" >
+                                    <div id="PowerChartHolder" runat="server"  visible="false" class="panel-body">                                    
+                                        <div id="PowerStats" >
                                             <div class="input-group input-group-sm">
                                                 <span class="input-group-addon glyphicon glyphicon-calendar"></span>
-                                                <input class="form-control" id="Energy_date" type="date"/>
-                                                <input id="btn_Energy_chart" type="button" class="form-control" value="Show Graph" />
+                                                <input class="form-control" id="Power_date" type="date"/>
+                                                <input id="btn_Power_chart" type="button" class="form-control" value="Show Graph" />
                                             </div>
-                                            <canvas id="EnergyChart" width="10" height="10"> 
+                                            <canvas id="PowerChart" width="10" height="10"> 
                                             </canvas>
                                         </div>
                                     </div>
