@@ -23,7 +23,7 @@ namespace WebServer1
 
         private async Task configEmailasync(IdentityMessage message)
         {
-            string FROM = "no-reply@hybernate.ca";   //TODO use a proper address
+            string FROM = "no-reply@hybernate.ca"; 
             string TO = message.Destination;  // Replace with a "To" address. If your account is still in the
                                                         // sandbox, this address must be verified.
 
